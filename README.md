@@ -25,6 +25,7 @@ Datei enthält Antwortzahl Nr.1
 - Leseanleitung der Character (links nach rechts; oben nach unten)
 
 ## Rätsel 2 (gelb)
+kurzer git test
 
 
 ## Rätsel 3 (grün)
