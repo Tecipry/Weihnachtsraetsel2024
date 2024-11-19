@@ -12,9 +12,7 @@ body {
    background-color: var(--tea_green);
 }
 
-
 /* Classes */
-
 
 .panel {
    display: inline-block;
@@ -39,7 +37,7 @@ body {
    box-sizing: border-box;
    width: 10%;
    height: 100%;
-   
+
    background-color: var(--hunter_green);
    border: 1px solid var(--rich_black);
    border-radius: 6px;
@@ -56,4 +54,14 @@ body {
 .button_check:active {
    background-color: var(--hunter_green);
    box-shadow: rgba(20, 70, 32, 0.2) 0 1px 0 inset;
+}
+
+.input_text {
+   margin: 1% auto;
+   display: block;
+   border: 1px solid var(--rich_black);
+   border-radius: 6px;
+   padding: 6px 16px;
+   text-align: center;
+   text-decoration: none;
 }
