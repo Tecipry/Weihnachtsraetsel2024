@@ -8,9 +8,13 @@
    /* --red: #ED1C24; */
 }
 
-.body {
+body {
    background-color: var(--tea_green);
 }
+
+
+/* Classes */
+
 
 .panel {
    display: inline-block;

@@ -20,7 +20,6 @@
 // }
 
 function loadNavBar() {
-   console.log("loading navbar");
    const navBarDiv = document.getElementById('navBarDiv');
    navBarDiv.innerHTML = `
       <nav>
