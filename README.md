@@ -9,6 +9,7 @@ auf website: 4 Rätselboxen, mit je einer Zahl als Ergebnis
 auf overview Page ist ein Feld, in welches Codes eingetragen werden können. Diese triggern entweder Tipps oder das revealen einer Zahl.
 
 ## Rätsel 1 (orange)
+
 "draw a heart" in einem 7x7 Feld
 
 auf den Kacheln stehen Character
@@ -16,6 +17,7 @@ auf den Kacheln stehen Character
 Character in Antwortfeld eintragen -> "Try it" button
 
 2 mögliche Lösungen:
+
 1. Herz gemalt: Weiterleitung zu Dateidownload. Datei ist Passwortgeschützt (drive)
 2. Herz invertiert gemalt: Passwort für Datei wird revealed
 
@@ -26,21 +28,32 @@ Character in Antwortfeld eintragen -> "Try it" button
 
 "oohhh, da habe ich mich im Zahlensystem vertan. Das wollte ich nicht in HEX sagen. Naja egal, du schaffst das schon. Love you"
 
-### Tipps auf Adventkarten:
-- Karte mit Herz
-- Karte mit invertiertem Herz
-- Rechner hex zu dezimal (https://bin-dez-hex-umrechner.de/)
+### Tipps:
+
+-  Karte mit Herz
+-  Karte mit invertiertem Herz
+-  Rechner hex zu dezimal (https://bin-dez-hex-umrechner.de/)
 
 ## Rätsel 2 (gelb)
 
-
 ## Rätsel 3 (grün)
-
 
 ## Rätsel 4 (blau)
 
-
 # random ideen
-- morseCode (Audio Datei)
-- one player Variante für Schiffe versenken
-- Snake: Elemente werden zu characters on death -> Muss lang genug sein, um link zu revealen
+
+-  morseCode (Audio Datei)
+-  one player Variante für Schiffe versenken
+-  Snake: Elemente werden zu characters on death -> Muss lang genug sein, um link zu revealen
+
+# Liste der Codes
+
+- `111111`:
+
+   "Yay, du hast die Website und auch den ersten gültigen Code gefunden. Jeder Code besteht aus 6 Ziffern und kann hier eingelöst werden. Mal schauen was du findest ;D Viel Erfolg <3"
+
+   Tür #1
+
+- `168953`:
+
+   von rotem Rätsel; revealt rote Zahl - noch nicht implemented

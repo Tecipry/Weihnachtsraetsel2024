@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <meta charset="UTF-8"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Weihnachtsr&auml;tsel 2024</title>
       <link rel="stylesheet" type="text/css" href="../css/style.css" />
       <script src="../js/script.js"></script>
@@ -15,10 +15,14 @@
    </script>
 
    <body>
-      <div style="align-content: center; margin: 5% auto; width: 70%;">
+      <div style="align-content: center; margin: 5% auto; width: 70%">
+         <p id="codeInfo" class="codeInfo"></p>
          <p id="codeText" class="codeText"></p>
-
-         <script>populateDivFromCode()</script>
+         <script>
+            populateDivFromCode();
+         </script>
       </div>
+
+      <button onclick="setRedSolvedCookie()">mark red as solved</button>
    </body>
 </html>

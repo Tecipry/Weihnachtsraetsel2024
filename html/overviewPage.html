@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <meta charset="UTF-8"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Weihnachtsr&auml;tsel 2024</title>
       <link rel="stylesheet" type="text/css" href="../css/style.css" />
       <script src="../js/script.js"></script>
@@ -19,32 +19,38 @@
          <a href="./riddleBoxRed.html" style="text-decoration: none">
             <div style="display: block; border: 10px solid red; width: 100px; height: 100px" id="riddleBoxRed">
                <!-- Content inside the box -->
-               <span style="font-size: 100px; display: flex; align-items: center; justify-content: center; color: red">?</span>
+               <span style="font-size: 100px; display: flex; align-items: center; justify-content: center; color: red" id="riddleBoxRed_Span"></span>
             </div>
          </a>
          <a href="./riddleBoxGreen.html" style="text-decoration: none">
             <div style="display: block; border: 10px solid green; width: 100px; height: 100px" id="riddleBoxGreen">
                <!-- Content inside the box -->
-               <span style="font-size: 100px; display: flex; align-items: center; justify-content: center; color: green">?</span>
+               <span style="font-size: 100px; display: flex; align-items: center; justify-content: center; color: green" id="riddleBoxGreen_Span"></span>
             </div>
          </a>
          <a href="./riddleBoxYellow.html" style="text-decoration: none">
             <div style="display: block; border: 10px solid yellow; width: 100px; height: 100px" id="riddleBoxYellow">
                <!-- Content inside the box -->
-               <span style="font-size: 100px; display: flex; align-items: center; justify-content: center; color: yellow">?</span>
+               <span style="font-size: 100px; display: flex; align-items: center; justify-content: center; color: yellow" id="riddleBoxYellow_Span"></span>
             </div>
          </a>
          <a href="./riddleBoxOrange.html" style="text-decoration: none">
             <div style="display: block; border: 10px solid orange; width: 100px; height: 100px" id="riddleBoxOrange">
                <!-- Content inside the box -->
-               <span style="font-size: 100px; display: flex; align-items: center; justify-content: center; color: orange">?</span>
+               <span style="font-size: 100px; display: flex; align-items: center; justify-content: center; color: orange" id="riddleBoxOrange_Span"></span>
             </div>
          </a>
+
+         <script>
+            setRiddleBoxStatus();
+         </script>
       </div>
 
       <div style="margin-top: 15%">
-         <input type="text" id="inputField" class="input_text" placeholder="Hast du einen Code?">
-         <buttion class="button_check" role="button" onclick="codesButtonHandling()">Code testen</button>
+         <input type="text" id="inputField" class="input_text" placeholder="Hast du einen Code?" />
+         <button class="button_check" role="button" onclick="codesButtonHandling()">Code testen</button>
       </div>
+
+      <button onclick="clearRiddleBoxCookies()">reset cookies</button>
    </body>
 </html>
