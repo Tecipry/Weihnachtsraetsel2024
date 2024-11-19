@@ -9,13 +9,13 @@ function create7x7Grid() {
       for (let j = 0; j < 7; j++) {
          let panel = document.createElement('div');
          panel.className = 'panel';
-         panel.style.backgroundColor = 'var(--seafoam_green)';
+         panel.style.backgroundColor = 'var(--tea_green)';
 
          panel.addEventListener('click', function() {
-            if (  this.style.backgroundColor === 'var(--seafoam_green)') {
-               this.style.backgroundColor = 'var(--red)';
+            if (  this.style.backgroundColor === 'var(--tea_green)') {
+               this.style.backgroundColor = 'var(--rusty_red)';
             } else {
-               this.style.backgroundColor = 'var(--seafoam_green)';
+               this.style.backgroundColor = 'var(--tea_green)';
             }
          });
          row.appendChild(panel);
@@ -29,7 +29,7 @@ function getCurrentGridValue() {
    const rows = panelGrid.children;
    const panels = Array.from(rows).map(
       row => Array.from(row.children).map(
-            panel => panel.style.backgroundColor === 'var(--seafoam_green)' ? 0 : 1
+            panel => panel.style.backgroundColor === 'var(--tea_green)' ? 0 : 1
          )
       );
    console.log(panels);

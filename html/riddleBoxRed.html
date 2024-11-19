@@ -7,7 +7,7 @@
    </head>
 
    <nav>
-      <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #4a4e69">
+      <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: var(--hunter_green)">
          <li style="float: left">
             <a href="./overviewPage.html" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none">zurück zur Overview</a>
          </li>
@@ -17,12 +17,12 @@
    <body class="body">
       <!-- <h1>Red Box</h1> -->
 
-      <div id="panel-grid" style="margin: 5% auto; width: 500px; height: 500px;"></div>
+      <div id="panel-grid" style="margin: 5% auto; width: 500px; height: 500px; border: 1px solid var(--rich_black)"></div>
 
       <script>
          create7x7Grid();
       </script>
 
-      <button onclick="getCurrentGridValue()">Check</button>
+      <button class="button_check" role="button" onclick="getCurrentGridValue()">Check</button>
    </body>
 </html>

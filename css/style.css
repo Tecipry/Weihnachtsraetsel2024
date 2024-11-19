@@ -1,22 +1,55 @@
 :root {
-    --seafoam_green: #CDE7B0;
-    --red: #ED1C24;
+   --tea_green: #cde7b0;
+   --rusty_red: #d64550;
+   --hunter_green: #3f6634;
+   --darkMoss_green: #345511;
+   --rich_black: #001514;
+
+   /* --red: #ED1C24; */
 }
 
-.body{
-    background-color: var(--seafoam_green);
+.body {
+   background-color: var(--tea_green);
 }
 
 .panel {
-    display: inline-block;
-    border: 1px solid black;
-    box-sizing: border-box;
-    width: calc(100% / 7);
-    height: 100%;
-    /* background-color: var(--seafoam_green); */
- }
- .gridRow7x7 {
-    width: 100%;
-    height: calc(100% / 7);
-    /* display: flex; seems to not be neccessary*/
- }
+   display: inline-block;
+   border: 1px solid var(--rich_black);
+   box-sizing: border-box;
+   width: calc(100% / 7);
+   height: 100%;
+   /* background-color: var(--tea_green); */
+}
+.gridRow7x7 {
+   width: 100%;
+   height: calc(100% / 7);
+   /* display: flex; seems to not be neccessary*/
+}
+
+/* Button to check e.g. a solution */
+.button_check {
+   display: block;
+   margin: auto;
+   background-color: var(--rusty_red);
+   color: white;
+   box-sizing: border-box;
+   width: 10%;
+   height: 100%;
+   
+   background-color: var(--hunter_green);
+   border: 1px solid var(--rich_black);
+   border-radius: 6px;
+   cursor: pointer;
+   font-size: 14px;
+   font-weight: 600;
+   padding: 6px 16px;
+   text-align: center;
+   text-decoration: none;
+}
+.button_check:hover {
+   background-color: var(--darkMoss_green);
+}
+.button_check:active {
+   background-color: var(--hunter_green);
+   box-shadow: rgba(20, 70, 32, 0.2) 0 1px 0 inset;
+}
