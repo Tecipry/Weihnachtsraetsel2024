@@ -32,7 +32,6 @@ Character in Antwortfeld eintragen -> "Try it" button
 - Rechner hex zu dezimal (https://bin-dez-hex-umrechner.de/)
 
 ## Rätsel 2 (gelb)
-kurzer git test
 
 
 ## Rätsel 3 (grün)
