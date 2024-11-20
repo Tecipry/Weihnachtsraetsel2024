@@ -22,19 +22,44 @@ Character in Antwortfeld eintragen -> "Try it" button
 2. Herz invertiert gemalt: Passwort für Datei wird revealed
 
 -> mp3 Datei mit Sprechtext:
-"Huiii, du hast mich gefunden. Nicht schlecht my love. Hier, ich habe einen Code für dich <em>**Code in HEX**</em>"
-
-<em>**Pause**</em>
-
-"oohhh, da habe ich mich im Zahlensystem vertan. Das wollte ich nicht in HEX sagen. Naja egal, du schaffst das schon. Love you"
+```txt
+Huiii, du hast mich gefunden. Nicht schlecht my love. Hier, ich habe einen Code für dich 293F9
+oohhh, da habe ich mich im Zahlensystem vertan. Das wollte ich nicht in HEX sagen. Naja egal, du schaffst das schon. Love you
+```
 
 ### Tipps:
 
 -  Karte mit Herz
 -  Karte mit invertiertem Herz
--  Rechner hex zu dezimal (https://bin-dez-hex-umrechner.de/)
+-  Erklärung für Umrechnung zwischen hex und dez (Video?) (als Code)
+-  Rechner hex zu dezimal (https://bin-dez-hex-umrechner.de/) (als Code)
 
 ## Rätsel 2 (gelb)
+
+snake game
+
+on death -> Elemente revealen youtube-Video link id
+
+in Video: (in morse code) 
+```txt
+   You have two unread messages: 
+   message one:
+      Wir brauchen noch Birnen und Chips. Habe dir die fuenf Euro wieder auf den Tisch gelegt. Sollte reichen.
+   message two:
+      Der Vortrag ist schon in vier Tagen, da sollten wir uns noch absprechen. Ich bin mit meinem Teil bisher nur auf acht Minuten gekommen.
+```
+
+-> Code: 215248
+
+Code ändert Snake game, sodass on death der Lösungscode für gelbe Box revealed wird
+
+### Tipps:
+
+-  Reihenfolge der Snake Elemente erklären
+-  Information, dass ein YouTube Video gesucht wird (als Code)
+-  morseCode aus dem Video aus txt (als Code)
+-  morseCode translator (https://morsecodee.com/de) (als Code)
+-  Hinweis, dass Zahlen im Text sind (Video zu simplen Verschlüsselungstechniken?) (als Code)
 
 ## Rätsel 3 (grün)
 
@@ -42,18 +67,30 @@ Character in Antwortfeld eintragen -> "Try it" button
 
 # random ideen
 
--  morseCode (Audio Datei)
+-  morseCode (Audio Datei) oder in unlisted youtube Video
 -  one player Variante für Schiffe versenken
 -  Snake: Elemente werden zu characters on death -> Muss lang genug sein, um link zu revealen
 
 # Liste der Codes
 
-- `111111`:
+-  `111111`:
 
    "Yay, du hast die Website und auch den ersten gültigen Code gefunden. Jeder Code besteht aus 6 Ziffern und kann hier eingelöst werden. Mal schauen was du findest ;D Viel Erfolg <3"
 
    Tür #1
 
-- `168953`:
+-  `168953`:
 
-   von rotem Rätsel; revealt rote Zahl - noch nicht implemented
+   genutzt in: rotes Rätsel; revealt rote Rätselbox
+
+-  `222222` (temp):
+
+   genutzt in: grünes Rätsel; revealt grüne Zahl 
+
+-  `333333` (temp):
+
+   genutzt in: gelbes Rätsel; revealt gelbe Zahl
+
+- `444444` (temp):
+
+   genutzt in: orangenes Rätsel; revealt orangene Zahl
