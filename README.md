@@ -8,7 +8,7 @@ auf website: 4 Rätselboxen, mit je einer Zahl als Ergebnis
 
 auf overview Page ist ein Feld, in welches Codes eingetragen werden können. Diese triggern entweder Tipps oder das revealen einer Zahl.
 
-## Rätsel 1 (orange)
+## Rätsel 1 (rot)
 
 "draw a heart" in einem 7x7 Feld
 
@@ -34,7 +34,7 @@ oohhh, da habe ich mich im Zahlensystem vertan. Das wollte ich nicht in HEX sage
 -  Erklärung für Umrechnung zwischen hex und dez (Video?) (als Code)
 -  Rechner hex zu dezimal (https://bin-dez-hex-umrechner.de/) (als Code)
 
-## Rätsel 2 (gelb)
+## Rätsel 2 (grün)
 
 snake game
 
@@ -61,9 +61,9 @@ Code ändert Snake game, sodass on death der Lösungscode für gelbe Box reveale
 -  morseCode translator (https://morsecodee.com/de) (als Code)
 -  Hinweis, dass Zahlen im Text sind (Video zu simplen Verschlüsselungstechniken?) (als Code)
 
-## Rätsel 3 (grün)
+## Rätsel 3 (gelb)
 
-## Rätsel 4 (blau)
+## Rätsel 4 (orange)
 
 # random ideen
 
