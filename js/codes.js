@@ -96,6 +96,26 @@ function populateDivFromCode() {
       codeInfo.innerHTML = "Glückwunsch! \"" + code + "\" ist ein gültiger Code";
       codeText.innerHTML = codeTranslation[code];
    }
+   executeFunctionFromCode(code);
+}
+
+function executeFunctionFromCode(functionCode) {
+   // red riddle box solved
+   if (functionCode === "168953") {
+      setRedSolvedCookie();
+   }
+   // green riddle box solved
+   else if (functionCode === "222222") {
+      setGreenSolvedCookie();
+   }
+   // yellow riddle box solved
+   else if (functionCode === "333333") {
+      setYellowSolvedCookie();
+   }
+   // orange riddle box solved
+   else if (functionCode === "444444") {
+      setOrangeSolvedCookie();
+   }
 }
 
 const codeTranslation = {
@@ -105,5 +125,16 @@ const codeTranslation = {
    "4": "Code4",
    "5": "Code5",
 
-   "111111": "Yay, du hast die Website und auch den ersten gültigen Code gefunden. Jeder Code besteht aus 6 Ziffern und kann hier gegen einen Tipp oder eine Information eingelöst werden. Mal schauen was du findest ;D<br>Viel Erfolg <3"
+   "111111": "Yay, du hast die Website und auch den ersten gültigen Code gefunden. Jeder Code besteht aus 6 Ziffern und kann hier gegen einen Tipp oder eine Information eingelöst werden. Mal schauen was du findest ;D<br>Viel Erfolg <3",
+   
+   //// RiddleBox solves ////
+   // red
+   "168953": "YAY!<br>Die rote Rätselbox ist gelöst. Die anderen schaffst du auch <3s",
+   // green (temp)
+   "222222": "Mit dem Code hast du die grüne Rätselbox gelöst. Weiter so ;D",
+   // yellow (temp)
+   "333333": "SUPER! Und das Rätsel der gelben Rätselbox hast du hinter dir. Proud of you ;)",
+   // orange (temp)
+   "444444": "Das war der Code mit dem du die orangene Rätselbox löst. WUNDERBAR!",
 }
+
