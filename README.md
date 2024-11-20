@@ -8,7 +8,7 @@ auf website: 4 Rätselboxen, mit je einer Zahl als Ergebnis
 
 auf overview Page ist ein Feld, in welches Codes eingetragen werden können. Diese triggern entweder Tipps oder das revealen einer Zahl.
 
-## Rätsel 1 (rot)
+## Rätsel 1 (rot) -> Done
 
 "draw a heart" in einem 7x7 Feld
 
@@ -22,10 +22,17 @@ Character in Antwortfeld eintragen -> "Try it" button
 2. Herz invertiert gemalt: Passwort für Datei wird revealed
 
 -> mp3 Datei mit Sprechtext:
+
+location: https://drive.google.com/file/d/1nwCjNDaW19i1651i0xRPpJbqN9Ea5HYG/view?usp=sharing
+
+Passwort: `TLOVESC`
 ```txt
 Huiii, du hast mich gefunden. Nicht schlecht my love. Hier, ich habe einen Code für dich 293F9
-oohhh, da habe ich mich im Zahlensystem vertan. Das wollte ich nicht in HEX sagen. Naja egal, du schaffst das schon. Love you
+oohhh, da habe ich mich im Zahlensystem vertan. Das wollte ich nicht in HEX sagen. Naja egal, du schaffst das schon. Love you!
 ```
+
+HEX in dezimal umwandeln ergibt Antwortcode
+
 
 ### Tipps:
 
@@ -73,24 +80,33 @@ Code ändert Snake game, sodass on death der Lösungscode für gelbe Box reveale
 
 # Liste der Codes
 
--  `111111`:
+- Allgemeine Codes
+   -  `111111`:
 
-   "Yay, du hast die Website und auch den ersten gültigen Code gefunden. Jeder Code besteht aus 6 Ziffern und kann hier eingelöst werden. Mal schauen was du findest ;D Viel Erfolg <3"
+      "Yay, du hast die Website und auch den ersten gültigen Code gefunden. Jeder Code besteht aus 6 Ziffern und kann hier eingelöst werden. Mal schauen was du findest ;D Viel Erfolg <3"
 
-   Tür #1
+      Tür #1
 
--  `168953`:
+- Rote Box
+   -  `168953`:
 
-   genutzt in: rotes Rätsel; revealt rote Rätselbox
+      genutzt in: rotes Rätsel; revealt rote Rätselbox
 
+   -  `921009`: 
+
+      gibt drive location
+
+- Grüne Box
 -  `222222` (temp):
 
-   genutzt in: grünes Rätsel; revealt grüne Zahl 
+      revealt grüne Zahl 
 
+- Gelbe Box
 -  `333333` (temp):
 
-   genutzt in: gelbes Rätsel; revealt gelbe Zahl
+      revealt gelbe Zahl
 
-- `444444` (temp):
+- Orangene Box
+   - `444444` (temp):
 
-   genutzt in: orangenes Rätsel; revealt orangene Zahl
+      revealt orangene Zahl

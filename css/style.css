@@ -22,10 +22,26 @@ body {
    height: 100%;
    /* background-color: var(--tea_green); */
 }
+.panel_grid {
+   margin: 2% auto;
+   width: 500px;
+   height: 500px;
+   border: 3px solid var(--rich_black);
+}
 .gridRow7x7 {
    width: 100%;
    height: calc(100% / 7);
    /* display: flex; seems to not be neccessary*/
+}
+.result_div {
+   padding: 5%;
+   text-align: center;
+   text-decoration: none;
+   color: var(--rich_black);
+   font-weight: 600;
+   font-size: 26px;
+   line-height: 40px;
+   word-wrap: break-word;
 }
 
 /* Button to check e.g. a solution */
@@ -70,21 +86,21 @@ body {
 /* Textfields for codes.html */
 
 .codeText {
-    text-align: center;
-    text-decoration: none;
-    color: var(--rich_black);
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 26px;
-    word-wrap: break-word;
+   text-align: center;
+   text-decoration: none;
+   color: var(--rich_black);
+   font-weight: 600;
+   font-size: 16px;
+   line-height: 26px;
+   word-wrap: break-word;
 }
 
 .codeInfo {
-    text-align: center;
-    text-decoration: none;
-    color: var(--hunter_green);
-    font-weight: 600;
-    font-size: 26px;
-    line-height: 40px;
-    word-wrap: break-word;
+   text-align: center;
+   text-decoration: none;
+   color: var(--hunter_green);
+   font-weight: 600;
+   font-size: 26px;
+   line-height: 40px;
+   word-wrap: break-word;
 }

@@ -1,4 +1,19 @@
+function heartSuccessfullyDrawn(inverted) {
+   if (!inverted) {
+      // normal heart
+      document.getElementById("result").innerHTML = "Das ist ein wunderschönes Herz!<br>Hier ein Code den du nutzen kannst: 921009";
+   } else {
+      // inverted heart
+      document.getElementById("result").innerHTML = "whoaa, darauf bin ich gar nicht so schnell gekommen! Mit dem roten Rand entsteht in der Mitte auch ein Herz.<br>Wunderschön<br>Dafür bekommst du du einen Code: 257041";
+   }
+}
 
+function heartNotDrawn() {
+   document.getElementById("result").innerHTML = "Das ist leider kein Herz :(";
+   setTimeout(function () {
+      document.getElementById("result").innerHTML = "";
+   }, 3000);
+}
 
 //// EXPORTED FUNCTIONS for riddleBoxRed.html ////
 
@@ -55,10 +70,14 @@ function checkCurrentGridValue() {
    const panels = Array.from(rows).map((row) => Array.from(row.children).map((panel) => (panel.style.backgroundColor === "var(--tea_green)" ? 0 : 1)));
    console.log(panels);
 
-   if (_.isEqual(panels, heart) || _.isEqual(panels, invertedHeart)) {
-      console.log("correct");
+   if (_.isEqual(panels, heart)) {
+      console.log("correct heart");
+      heartSuccessfullyDrawn(false);
+   } else if (_.isEqual(panels, invertedHeart)) {
+      console.log("correct inverted heart");
+      heartSuccessfullyDrawn(true);
    } else {
-      console.log("wrong");
+      heartNotDrawn();
    }
 }
 window.checkCurrentGridValue = checkCurrentGridValue;

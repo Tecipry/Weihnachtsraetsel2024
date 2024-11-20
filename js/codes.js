@@ -79,9 +79,13 @@ const codeTranslation = {
 
    111111: "Yay, du hast die Website und auch den ersten gültigen Code gefunden. Jeder Code besteht aus 6 Ziffern und kann hier gegen einen Tipp oder eine Information eingelöst werden. Mal schauen was du findest ;D<br>Viel Erfolg <3",
 
+   // CODES FOR RIDDLE BOX //
+   921009: "Das war ein wirklich schönes Herz was du da gemalt hast. Dafür habe ich hier etwas für dich:<br><a href='https://drive.google.com/file/d/1nwCjNDaW19i1651i0xRPpJbqN9Ea5HYG/view?usp=sharing' class='codeText' target='_blank' style='text-decoration: underline'>https://drive.google.com/file/d/1nwCjNDaW19i1651i0xRPpJbqN9Ea5HYG/view?usp=sharing</a>",
+   257041: "Du suchst nicht zufällig ein Passwort für eine Audio Datei?<br>Hier: TLOVESC",
+
    //// RiddleBox solves ////
    // red
-   168953: "YAY!<br>Die rote Rätselbox ist gelöst. Die anderen schaffst du auch <3s",
+   168953: "YAY!<br>Die rote Rätselbox ist gelöst. Die anderen schaffst du auch <3",
    // green (temp)
    222222: "Mit dem Code hast du die grüne Rätselbox gelöst. Weiter so ;D",
    // yellow (temp)
