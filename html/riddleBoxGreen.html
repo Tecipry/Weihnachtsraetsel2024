@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <meta charset="UTF-8"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Weihnachtsr&auml;tsel 2024</title>
       <link rel="stylesheet" type="text/css" href="../css/style.css" />
+      <link rel="stylesheet" type="text/css" href="../css/riddleBoxGreen.css" />
       <script src="../js/script.js"></script>
+      <script src="../js/riddleBoxGreen.js" type="module"></script>
    </head>
 
-   <div id="navBarDiv"></div>
-   <script>
-      loadNavBar();
-   </script>
-
    <body>
-      <h1>Green Box</h1>
+      <div id="navBarDiv"></div>
+      <script>
+         loadNavBar();
+      </script>
+
+      <div id="snakeGameContainer" class="snakeGameContainer">
+         <canvas id="snake_canvas"></canvas>
+         <button onclick="startSnakeGame()">Go</button>
+
+         <script>
+            
+         </script>
+      </div>
    </body>
 </html>

@@ -10,6 +10,7 @@
 
 body {
    background-color: var(--tea_green);
+   margin: 0;
 }
 
 /* Classes */
