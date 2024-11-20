@@ -6,7 +6,7 @@
       <title>Weihnachtsr&auml;tsel 2024</title>
       <link rel="stylesheet" type="text/css" href="../css/style.css" />
       <script src="../js/script.js"></script>
-      <script src="../js/codes.js"></script>
+      <script src="../js/codes.js" type="module"></script>
    </head>
 
    <div id="navBarDiv"></div>
@@ -19,10 +19,10 @@
          <p id="codeInfo" class="codeInfo"></p>
          <p id="codeText" class="codeText"></p>
          <script>
-            populateDivFromCode();
+            document.addEventListener("DOMContentLoaded", () => {
+               populateDivFromCode();
+            });
          </script>
       </div>
-
-      <button onclick="setRedSolvedCookie()">mark red as solved</button>
    </body>
 </html>

@@ -6,7 +6,7 @@
       <title>Weihnachtsr&auml;tsel 2024</title>
       <link rel="stylesheet" type="text/css" href="../css/style.css" />
       <script src="../js/script.js"></script>
-      <script src="../js/overviewPage.js"></script>
+      <script src="../js/overviewPage.js" type="module"></script>
    </head>
 
    <div id="navBarDiv"></div>
@@ -42,7 +42,9 @@
          </a>
 
          <script>
-            setRiddleBoxStatus();
+            document.addEventListener("DOMContentLoaded", () => {
+               setRiddleBoxStatus();
+            });
          </script>
       </div>
 

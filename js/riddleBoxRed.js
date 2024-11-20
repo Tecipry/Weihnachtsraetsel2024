@@ -1,3 +1,7 @@
+
+
+//// EXPORTED FUNCTIONS for riddleBoxRed.html ////
+
 function create7x7Grid() {
    // create a 7x7 grid of panels
    const panelGrid = document.getElementById("panel-grid");
@@ -23,6 +27,7 @@ function create7x7Grid() {
       panelGrid.appendChild(row);
    }
 }
+window.create7x7Grid = create7x7Grid;
 
 const heart = [
    [0, 0, 0, 0, 0, 0, 0],
@@ -56,19 +61,4 @@ function checkCurrentGridValue() {
       console.log("wrong");
    }
 }
-
-// function downloadFile() {
-//    const fileContent = "Hello, this is the content of the file!";
-//    const fileName = "example.txt";
-
-//    const blob = new Blob([fileContent], { type: "text/plain" });
-//    const fileURL = URL.createObjectURL(blob);
-
-//    const anchor = document.createElement("a");
-//    anchor.href = fileURL;
-//    anchor.download = fileName;
-
-//    anchor.click();
-
-//    URL.revokeObjectURL(fileURL);
-// }
+window.checkCurrentGridValue = checkCurrentGridValue;
