@@ -10,7 +10,6 @@ var spawnAppleConfined = true;
 var gameIsRunning = false;
 
 // set size of canvas to largest multiple of grid which is smaller than the viewport size
-const snakeGameContainer = document.getElementById("snakeGameContainer");
 const panel_canvas = document.getElementById("snake_panel_canvas");
 const snakeGameContainerWidth = document.getElementById("snakeGameContainer").offsetWidth;
 const snakeGameContainerHeight = document.getElementById("snakeGameContainer").offsetHeight;
@@ -26,10 +25,10 @@ const amountOfPanelsHorizontal = Math.floor(snakeGameContainerWidth / gridSize);
 const amountOfPanelsVertical = Math.floor(snakeGameContainerHeight / gridSize);
 
 // border should be at 1/4 of the whole game area, both horizontally and vertically
-const upperBorderRow = Math.floor(amountOfPanelsVertical / 4);
-const lowerBorderRow = Math.floor((amountOfPanelsVertical * 3) / 4);
-const leftBorderColoumn = Math.floor(amountOfPanelsHorizontal / 4);
-const rightBorderColoumn = Math.floor((amountOfPanelsHorizontal * 3) / 4);
+const upperBorderRow = Math.floor(amountOfPanelsVertical / 3);
+const lowerBorderRow = Math.floor(amountOfPanelsVertical / 3 * 2);
+const leftBorderColoumn = Math.floor(amountOfPanelsHorizontal / 3);
+const rightBorderColoumn = Math.floor(amountOfPanelsHorizontal / 3 * 2);
 
 // snake Variables. Values are set on game startup in function startGame()
 var snake = {};
@@ -48,8 +47,7 @@ if (snakeGameState === null) {
 var snakeTextToReveal = "";
 switch (snakeGameState) {
    case "0":
-      //TODO create Video and add valid URL
-      snakeTextToReveal = "https://www.youtube.com/watch?v=someUrl";
+      snakeTextToReveal = "https://www.youtube.com/watch?v=rdERHBj2yQA";
       break;
    case "1":
       snakeTextToReveal = "Code: 214174";
@@ -59,6 +57,31 @@ switch (snakeGameState) {
       snakeTextToReveal = "ERROR";
       break;
 }
+
+//store all panels to manipulate them individually
+const indexForAllCanvasPanels = [];
+
+// fill panel_canvas with grid of divs (squares of size gridSize)
+for (let y = 0; y < amountOfPanelsVertical; y++) {
+   let row = document.createElement("div");
+   row.style.height = gridSize + "px";
+   row.className = "panelCanvasRow";
+
+   const rowArray = [];
+
+   for (let x = 0; x < amountOfPanelsHorizontal; x++) {
+      let panel = document.createElement("div");
+      panel.className = "panelCanvasPanel";
+      panel.style.height = gridSize + "px";
+      panel.style.width = gridSize + "px";
+
+      rowArray.push(panel);
+      row.appendChild(panel);
+   }
+   indexForAllCanvasPanels.push(rowArray);
+   panel_canvas.appendChild(row);
+}
+
 
 function startGame() {
    // reset game state
@@ -88,32 +111,6 @@ function startGame() {
    requestAnimationFrame(loop);
 }
 
-
-
-//store all panels to manipulate them individually
-const indexForAllCanvasPanels = [];
-
-// fill panel_canvas with grid of divs (squares of size gridSize)
-for (let y = 0; y < amountOfPanelsVertical; y++) {
-   let row = document.createElement("div");
-   row.style.height = gridSize + "px";
-   row.className = "panelCanvasRow";
-
-   const rowArray = [];
-
-   for (let x = 0; x < amountOfPanelsHorizontal; x++) {
-      let panel = document.createElement("div");
-      panel.className = "panelCanvasPanel";
-      panel.style.height = gridSize + "px";
-      panel.style.width = gridSize + "px";
-
-      rowArray.push(panel);
-      row.appendChild(panel);
-   }
-   indexForAllCanvasPanels.push(rowArray);
-   panel_canvas.appendChild(row);
-}
-
 function getIndividualPanel(x, y) {
    if (x < 0 || x > indexForAllCanvasPanels[0].length || y < 0 || y > indexForAllCanvasPanels.length) {
       return null;
@@ -123,11 +120,6 @@ function getIndividualPanel(x, y) {
 
 //// DEFINE BORDERS FOR GAME ////
 //// create array of all border panels ////
-const cornerTopLext = [leftBorderColoumn, upperBorderRow];
-const cornerTopRight = [rightBorderColoumn, upperBorderRow];
-const cornerBottomLeft = [leftBorderColoumn, lowerBorderRow];
-const cornerBottomRight = [rightBorderColoumn, lowerBorderRow];
-
 var borderPanelCoordinates = [];
 // top row
 for (let x = leftBorderColoumn; x <= rightBorderColoumn; x++) {
