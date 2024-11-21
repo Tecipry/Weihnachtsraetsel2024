@@ -90,16 +90,16 @@ Code ändert Snake game, sodass on death der Lösungscode für gelbe Box reveale
 - Rote Box
    -  `168953`:
 
-      genutzt in: rotes Rätsel; revealt rote Rätselbox
+      revealt rote Rätselbox
 
    -  `921009`: 
 
       gibt drive location
 
 - Grüne Box
--  `222222` (temp):
+-  `214174`:
 
-      revealt grüne Zahl 
+      revealt grüne Zahl
 
 - Gelbe Box
 -  `333333` (temp):

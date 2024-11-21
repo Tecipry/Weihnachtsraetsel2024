@@ -28,7 +28,7 @@ function executeFunctionFromCode(functionCode) {
       setRiddleBoxSolvedCookie("riddleBoxRed");
    }
    // green riddle box solved
-   else if (functionCode === "222222") {
+   else if (functionCode === "214174") {
       setRiddleBoxSolvedCookie("riddleBoxGreen");
    }
    // yellow riddle box solved
@@ -71,12 +71,7 @@ export function populateDivFromCode() {
 window.populateDivFromCode = populateDivFromCode;
 
 const codeTranslation = {
-   1: "Code1<br>Code1",
-   2: "Code2",
-   3: "Code3",
-   4: "Code4",
-   5: "Code5",
-
+   // Explanation codes or other //
    111111: "Yay, du hast die Website und auch den ersten gültigen Code gefunden. Jeder Code besteht aus 6 Ziffern und kann hier gegen einen Tipp oder eine Information eingelöst werden. Mal schauen was du findest ;D<br>Viel Erfolg <3",
 
    // CODES FOR RIDDLE BOX //
@@ -87,7 +82,7 @@ const codeTranslation = {
    // red
    168953: "YAY!<br>Die rote Rätselbox ist gelöst. Die anderen schaffst du auch <3",
    // green (temp)
-   222222: "Mit dem Code hast du die grüne Rätselbox gelöst. Weiter so ;D",
+   214174: "Mit dem Code hast du die grüne Rätselbox gelöst. Weiter so ;D",
    // yellow (temp)
    333333: "SUPER! Und das Rätsel der gelben Rätselbox hast du hinter dir. Proud of you ;)",
    // orange (temp)
