@@ -77,6 +77,11 @@ Code ändert Snake game, sodass on death der Lösungscode für gelbe Box reveale
 
 -  one player Variante für Schiffe versenken
 -  drag & drop puzzle
+-  Lichtquelle die der Maus folgt -> Dinge müssen gefunden werden
+   -  Kombination mit einem "Was hat sich geändert". Zeit zum anschauen, aber im dunkeln. Danach ändert sich was und Licht geht an.
+-  Crossword (https://www.xwords-generator.de/en)
+-  evtl irgendwas mit windowSize
+-  Golf
 
 # Liste der Codes
 
