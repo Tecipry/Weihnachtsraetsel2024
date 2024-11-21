@@ -75,9 +75,8 @@ Code ändert Snake game, sodass on death der Lösungscode für gelbe Box reveale
 
 # random ideen
 
--  morseCode (Audio Datei) oder in unlisted youtube Video
 -  one player Variante für Schiffe versenken
--  Snake: Elemente werden zu characters on death -> Muss lang genug sein, um link zu revealen
+-  drag & drop puzzle
 
 # Liste der Codes
 

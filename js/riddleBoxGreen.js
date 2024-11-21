@@ -50,7 +50,7 @@ switch (snakeGameState) {
       snakeTextToReveal = "https://www.youtube.com/watch?v=rdERHBj2yQA";
       break;
    case "1":
-      snakeTextToReveal = "Code: 214174";
+      snakeTextToReveal = "Morsecode entschlüsseln ist nervig, ich weiß... Dafür hier ein Code: 214174";
       gameIsConfined = false;
       break;
    default:
