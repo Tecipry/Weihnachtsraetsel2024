@@ -1,35 +1,8 @@
 import * as cookieUtils from "./utils/cookieUtils.js";
 
-//// SECRET TEXT REVEALED ON DEATH ////
-// reveals which text should be revealed. saved via cookie
-// 0 -> link to yt
-// 1 -> Boxcode for green riddle box
-var snakeTextRevealLevel = cookieUtils.getCookie("snakeTextRevealLevel");
-if (snakeTextRevealLevel === null) {
-   snakeTextRevealLevel = 0;
-   cookieUtils.setCookie("snakeTextRevealLevel", snakeTextRevealLevel, 365);
-}
-
-var snakeTextToReveal = ""
-switch (snakeTextRevealLevel) {
-   case "0":
-      //TODO add valid video url
-      snakeTextToReveal = "https://www.youtube.com/watch?v=someUrl";
-      break;
-   case "1":
-      snakeTextToReveal = "Code: 214174";
-      break;
-   default:
-      snakeTextToReveal = "ERROR";
-      break;
-}
-
-
-
-
 //// VARIABLES ////
 var gridSize = 16;
-var count = 0;
+
 // determines whether the snake is confined to the smaller borders or not
 var gameIsConfined = true;
 // determines whether the apple spawning is confined to the smaller borders or not
@@ -61,6 +34,61 @@ const rightBorderColoumn = Math.floor((amountOfPanelsHorizontal * 3) / 4);
 // snake Variables. Values are set on game startup in function startGame()
 var snake = {};
 var apple = {};
+
+//// SECRET TEXT REVEALED ON DEATH ////
+// reveals which text should be revealed. saved via cookie
+// 0 -> link to yt
+// 1 -> Boxcode for green riddle box
+var snakeGameState = cookieUtils.getCookie("snakeGameState");
+if (snakeGameState === null) {
+   snakeGameState = "0";
+   cookieUtils.setCookie("snakeGameState", snakeGameState, 365);
+}
+
+var snakeTextToReveal = "";
+switch (snakeGameState) {
+   case "0":
+      //TODO create Video and add valid URL
+      snakeTextToReveal = "https://www.youtube.com/watch?v=someUrl";
+      break;
+   case "1":
+      snakeTextToReveal = "Code: 214174";
+      gameIsConfined = false;
+      break;
+   default:
+      snakeTextToReveal = "ERROR";
+      break;
+}
+
+function startGame() {
+   // reset game state
+   snake = {
+      x: Math.floor(amountOfPanelsHorizontal / 2),
+      y: Math.floor(amountOfPanelsVertical / 2),
+
+      // snake velocity. moves one grid length every frame in either the x or y direction
+      dx: 0,
+      dy: -1,
+
+      // keep track of all grids the snake body occupies
+      cells: [],
+
+      // length of the snake. grows when eating an apple
+      maxCells: 4,
+   };
+   apple = {
+      count: 0
+   };
+   newApple(spawnAppleConfined);
+   clearText();
+
+   // start game
+   gameIsRunning = true;
+   updateSnakeDeathCells(gameIsConfined);
+   requestAnimationFrame(loop);
+}
+
+
 
 //store all panels to manipulate them individually
 const indexForAllCanvasPanels = [];
@@ -171,12 +199,12 @@ function getRandomInt(min, max) {
 }
 
 //generate new apple
-function newApple(confined) {
+function newApple() {
    var illegalAppleSpawnLocations = snake.cells;
 
    var validAppleSpawnLocation = false;
    while (!validAppleSpawnLocation) {
-      if (confined) {
+      if (spawnAppleConfined) {
          console.log("spawning confined apple");
          apple.x = getRandomInt(leftBorderColoumn + 1, rightBorderColoumn - 1);
          apple.y = getRandomInt(upperBorderRow + 1, lowerBorderRow - 1);
@@ -192,6 +220,13 @@ function newApple(confined) {
          })
       ) {
          validAppleSpawnLocation = true;
+         if (spawnAppleConfined && !gameIsConfined) {
+            apple.count += 1
+            ;
+         }
+         if (apple.count > 4) {
+            spawnAppleConfined = false;
+         }
       }
    }
 }
@@ -250,40 +285,20 @@ function updateSnakeDeathCells(confined) {
    }
 }
 
+let lastTime = 0;
 function loop() {
-   if (gameIsRunning) {
-      requestAnimationFrame(loop);
-   } else {
+   if (!gameIsRunning) {
       handleDeath(snake);
-   }
-
-   // slow game loop to 5 fps instead of 60 (60/5 = 12)
-   if (++count < 12) {
       return;
    }
 
-   count = 0;
+   let time = Date.now();
+
    clearCanvas();
 
    // move snake by it's velocity
    snake.x += snake.dx;
    snake.y += snake.dy;
-
-   // // wrap snake position horizontally on edge of screen
-   // if (snake.x < 0) {
-   //    snake.x = canvas.width - gridSize;
-   // }
-   // else if (snake.x >= canvas.width) {
-   //    snake.x = 0;
-   // }
-
-   // // wrap snake position vertically on edge of screen
-   // if (snake.y < 0) {
-   //    snake.y = canvas.height - gridSize;
-   // }
-   // else if (snake.y >= canvas.height) {
-   //    snake.y = 0;
-   // }
 
    // keep track of where snake has been. front of the array is always the head
    snake.cells.unshift({ x: snake.x, y: snake.y });
@@ -327,15 +342,15 @@ function loop() {
    snake.cells.forEach(function (cell, index) {
       drawPanel(cell.x, cell.y, "var(--hunter_green)");
    });
+
+   const frameRuntime = Date.now() - time;
+
+   // trigger new frame
+   setTimeout(loop, 100 - frameRuntime);
 }
 
 // listen to keyboard events to move the snake
 document.addEventListener("keydown", function (e) {
-   // prevent snake from backtracking on itself by checking that it's
-   // not already moving on the same axis (pressing left while moving
-   // left won't do anything, and pressing right while moving left
-   // shouldn't let you collide with your own body)
-
    // left arrow key
    if (e.which === 37 && snake.dx === 0) {
       snake.dx = -1;
@@ -363,29 +378,3 @@ document.addEventListener("keydown", function (e) {
       }
    }
 });
-
-function startGame() {
-   // reset game state
-   snake = {
-      x: Math.floor(amountOfPanelsHorizontal / 2),
-      y: Math.floor(amountOfPanelsVertical / 2),
-
-      // snake velocity. moves one grid length every frame in either the x or y direction
-      dx: 1,
-      dy: 0,
-
-      // keep track of all grids the snake body occupies
-      cells: [],
-
-      // length of the snake. grows when eating an apple
-      maxCells: 4,
-   };
-   apple = {};
-   newApple(spawnAppleConfined);
-   clearText();
-
-   // start game
-   gameIsRunning = true;
-   updateSnakeDeathCells(gameIsConfined);
-   requestAnimationFrame(loop);
-}

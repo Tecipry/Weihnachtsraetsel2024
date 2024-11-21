@@ -39,6 +39,10 @@ function executeFunctionFromCode(functionCode) {
    else if (functionCode === "444444") {
       setRiddleBoxSolvedCookie("riddleBoxOrange");
    }
+   // set cookie to change snakeGame to snakeGameState 1
+   else if (functionCode === "215248") {
+      cookieUtils.setCookie("snakeGameState", "1", 365);
+   }
 }
 
 
@@ -75,8 +79,13 @@ const codeTranslation = {
    111111: "Yay, du hast die Website und auch den ersten gültigen Code gefunden. Jeder Code besteht aus 6 Ziffern und kann hier gegen einen Tipp oder eine Information eingelöst werden. Mal schauen was du findest ;D<br>Viel Erfolg <3",
 
    // CODES FOR RIDDLE BOX //
+
+   // red
    921009: "Das war ein wirklich schönes Herz was du da gemalt hast. Dafür habe ich hier etwas für dich:<br><a href='https://drive.google.com/file/d/1nwCjNDaW19i1651i0xRPpJbqN9Ea5HYG/view?usp=sharing' class='codeText' target='_blank' style='text-decoration: underline'>https://drive.google.com/file/d/1nwCjNDaW19i1651i0xRPpJbqN9Ea5HYG/view?usp=sharing</a>",
    257041: "Du suchst nicht zufällig ein Passwort für eine Audio Datei?<br>Hier: TLOVESC",
+
+   // green
+   215248: "Da habe ich echt meine Notizen durcheinander gebracht... Zum Glück konntest du den Code in dezimal umwandeln.<br>Ist dir schon aufgefallen, dass die Schlange durch den Tod eine Zelle kürzer wird?<br>Ich weiß woran es liegt. Ist mir gerade aber zu viel Aufwand um es zu lösen - deswegen mache ich es einfach nicht.<br>It's a feature, not a bug ;D",
 
    //// RiddleBox solves ////
    // red

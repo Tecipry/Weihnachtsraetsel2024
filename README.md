@@ -63,6 +63,7 @@ Code ändert Snake game, sodass on death der Lösungscode für gelbe Box reveale
 ### Tipps:
 
 -  Reihenfolge der Snake Elemente erklären
+-  Press Space to start the game
 -  Information, dass ein YouTube Video gesucht wird (als Code)
 -  morseCode aus dem Video aus txt (als Code)
 -  morseCode translator (https://morsecodee.com/de) (als Code)
