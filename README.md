@@ -82,6 +82,8 @@ Code ändert Snake game, sodass on death der Lösungscode für gelbe Box reveale
 -  Crossword (https://www.xwords-generator.de/en)
 -  evtl irgendwas mit windowSize
 -  Golf
+-  mehrere Browser Tabs müssen gleichzeitig offen sein
+   -  z.B. Code aus einem Tab im anderen eintippen o.ä.
 
 # Liste der Codes
 
