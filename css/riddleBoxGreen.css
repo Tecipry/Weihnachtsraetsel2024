@@ -2,13 +2,13 @@ body, html {
    height: 100%;
 }
 
-canvas {
-   border: 2px solid var(--hunter_green);
+.snakePanelCanvas {
+   /* border: 2px solid var(--hunter_green);s */
    /* display: block; */
    position: absolute;
    top: 0;
    left: 0;
-   z-index: 0; /* Ensure it's behind other elements */
+   /* z-index: 0; /* Ensure it's behind other elements */
 }
 
 button {
@@ -25,6 +25,16 @@ button {
 .snakeGameContainer {
    margin: 0 auto;
    position: relative;
-   width: 80%;
-   height: 60%;
+   width: 100%;
+   height: 92%;
 }
+
+.panelCanvasRow {
+   display: flex;
+   width: 100%;
+}
+
+.panelCanvasPanel {
+   box-sizing: border-box;
+   border: 1px solid var(--tea_green);
+}  
