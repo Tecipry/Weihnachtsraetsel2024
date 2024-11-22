@@ -71,6 +71,10 @@ Code ändert Snake game, sodass on death der Lösungscode für gelbe Box reveale
 
 ## Rätsel 3 (gelb)
 
+Golf -> 6 level; 
+-  jedes Level enthält eine Zahl in Form des Level-layout -> Lösungscode für gelb
+-  eine Zahl bei Abschluss des Levels -> gibt Tipp, dass Levelzahl wichtig ist
+
 ## Rätsel 4 (orange)
 
 # random ideen
