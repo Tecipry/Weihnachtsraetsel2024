@@ -225,8 +225,6 @@ function newApple() {
 }
 
 function handleDeath(snake) {
-   console.log(snake);
-
    const text = snakeTextToReveal;
    for (let i = 0; i < text.length; i++) {
       setTimeout(function () {
@@ -289,6 +287,18 @@ function loop() {
 
    clearCanvas();
 
+   // update velocity if input was made (inputList is not empty)
+   if (inputList.length > 0) {
+      const input = inputList.shift();
+      if (input.dx === -snake.dx || input.dy === -snake.dy) {
+         console.log("skipped invalid input");
+      }
+      else {
+         snake.dx = input.dx;
+         snake.dy = input.dy;
+      }
+   }
+
    // move snake by it's velocity
    snake.x += snake.dx;
    snake.y += snake.dy;
@@ -306,8 +316,12 @@ function loop() {
 
    // snake ate apple
    if (snake.cells[0].x === apple.x && snake.cells[0].y === apple.y) {
-      snake.maxCells++;
-
+      if (spawnAppleConfined){
+         snake.maxCells++;
+      }
+      else {
+         snake.maxCells += 3;
+      }
       newApple(spawnAppleConfined);
    }
 
@@ -343,27 +357,43 @@ function loop() {
 }
 
 // listen to keyboard events to move the snake
+// keyboard events are added to input list, to ensure that only one input is computed per frame
+
+var inputList = [];
 document.addEventListener("keydown", function (e) {
    // left arrow key
-   if (e.which === 37 && snake.dx === 0) {
-      snake.dx = -1;
-      snake.dy = 0;
+   if (e.which === 37) {
+      let input = {
+         dx: -1,
+         dy: 0
+      }
+      inputList.push(input);
    }
    // up arrow key
-   else if (e.which === 38 && snake.dy === 0) {
-      snake.dy = -1;
-      snake.dx = 0;
+   else if (e.which === 38) {
+      let input = {
+         dx: 0,
+         dy: -1
+      }
+      inputList.push(input);
    }
    // right arrow key
-   else if (e.which === 39 && snake.dx === 0) {
-      snake.dx = 1;
-      snake.dy = 0;
+   else if (e.which === 39) {
+      let input = {
+         dx: 1,
+         dy: 0
+      }
+      inputList.push(input);
    }
    // down arrow key
-   else if (e.which === 40 && snake.dy === 0) {
-      snake.dy = 1;
-      snake.dx = 0;
+   else if (e.which === 40) {
+      let input = {
+         dx: 0,
+         dy: 1
+      }
+      inputList.push(input);
    }
+
    // spacebar
    else if (e.which === 32) {
       if (!gameIsRunning) {

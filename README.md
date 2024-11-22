@@ -47,7 +47,7 @@ snake game
 
 on death -> Elemente revealen youtube-Video link id
 
-in Video: (in morse code) 
+in Video: (in morse code) (https://www.youtube.com/watch?v=rdERHBj2yQA)
 ```txt
    You have two unread messages: 
    message one:
@@ -62,8 +62,8 @@ Code ändert Snake game, sodass on death der Lösungscode für gelbe Box reveale
 
 ### Tipps:
 
--  Reihenfolge der Snake Elemente erklären
 -  Press Space to start the game
+-  Reihenfolge der Snake Elemente erklären
 -  Information, dass ein YouTube Video gesucht wird (als Code)
 -  morseCode aus dem Video aus txt (als Code)
 -  morseCode translator (https://morsecodee.com/de) (als Code)
@@ -107,6 +107,10 @@ Code ändert Snake game, sodass on death der Lösungscode für gelbe Box reveale
 -  `214174`:
 
       revealt grüne Zahl
+
+-  `215248`:
+
+      ändert SnakeGame zu unconfined; Snake revealed nun Lösungscode für grün 
 
 - Gelbe Box
 -  `333333` (temp):

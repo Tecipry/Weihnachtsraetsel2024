@@ -85,11 +85,11 @@ const codeTranslation = {
    257041: "Du suchst nicht zufällig ein Passwort für eine Audio Datei?<br>Hier: TLOVESC",
 
    // green
-   215248: "Da habe ich echt meine Notizen durcheinander gebracht... Zum Glück konntest du den Code in dezimal umwandeln.<br>Ist dir schon aufgefallen, dass die Schlange durch den Tod eine Zelle kürzer wird?<br>Ich weiß woran es liegt. Ist mir gerade aber zu viel Aufwand um es zu lösen - deswegen mache ich es einfach nicht.<br>It's a feature, not a bug ;D",
+   215248: "Ist dir schon aufgefallen, dass die Schlange durch den Tod eine Zelle kürzer wird?<br>Ich weiß woran es liegt. Ist mir gerade aber zu viel Aufwand um es zu lösen - deswegen mache ich es einfach nicht.<br>It's a feature, not a bug ;D",
 
    //// RiddleBox solves ////
    // red
-   168953: "YAY!<br>Die rote Rätselbox ist gelöst. Die anderen schaffst du auch <3",
+   168953: "Da habe ich echt meine Notizen durcheinander gebracht... Zum Glück konntest du den Code in dezimal umwandeln.<br>damit ist die rote Rätselbox ist gelöst ;D Die anderen schaffst du auch <3",
    // green (temp)
    214174: "Mit dem Code hast du die grüne Rätselbox gelöst. Weiter so ;D",
    // yellow (temp)
