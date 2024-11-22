@@ -176,6 +176,7 @@ function writeTextToPanel(x, y, text) {
    workingPanel.innerHTML = text;
    workingPanel.style.fontSize = Math.floor((gridSize / 4) * 3) + "px";
    workingPanel.style.textAlign = "center";
+   workingPanel.style.color = "var(--tea_green)";
    allTextPanels.push(workingPanel);
 }
 //reset text of all panels
