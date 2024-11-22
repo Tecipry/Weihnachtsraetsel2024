@@ -1,16 +1,5 @@
 import * as cookieUtils from "./utils/cookieUtils.js";
-
-// extract url parameters. Param definition is startet with ? and they are seperated with & in the url
-const url = document.URL;
-var paramPairs = {};
-if (url.includes("?") && url.includes("=")) {
-   var params = url.split("?")[1].split("&");
-   paramPairs = params.reduce(function (acc, param) {
-      var [key, value] = param.split("=");
-      acc[key] = value;
-      return acc;
-   }, {});
-}
+import * as paramUtils from "./utils/paramUtils.js";
 
 function setRiddleBoxSolvedCookie(riddleBoxName) {
    const riddleBoxesStatus = cookieUtils.getCookie("riddleBoxesStatus");
@@ -20,7 +9,6 @@ function setRiddleBoxSolvedCookie(riddleBoxName) {
       cookieUtils.setCookie("riddleBoxesStatus", JSON.stringify(riddleBoxesSolved), 365);
    }
 }
-
 
 function executeFunctionFromCode(functionCode) {
    // red riddle box solved
@@ -47,15 +35,13 @@ function executeFunctionFromCode(functionCode) {
 
 
 //// EXPORTED FUNCTIONS for codes.html ////
-
-const parameters = Object.keys(paramPairs);
+const code = paramUtils.getParamValue("code");
 export function populateDivFromCode() {
-   if (!parameters.includes("code")) {
+   if (code === null) {
       console.log("no code");
       window.location.href = "./overviewPage.html";
       return;
    }
-   const code = paramPairs["code"];
    console.log(code);
 
    codeText = document.getElementById("codeText");
