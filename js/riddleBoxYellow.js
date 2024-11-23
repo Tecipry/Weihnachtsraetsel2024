@@ -21,6 +21,13 @@ function relSize(percentage) {
    return Math.floor(canvas.width * percentage);
 }
 
+function vector(x, y) {
+   const obj = {
+      x: x,
+      y: y,
+   };
+   return obj;
+}
 function point(x, y) {
    const obj = {
       type: "point",
@@ -64,8 +71,7 @@ window.line = line;
 // real canvas objects //
 var golfBall = {
    type: circle(relWidth(0.5), relHeight(0.5), relSize(0.01), "white"),
-   vx: 0,
-   vy: 0,
+   velocity: vector(0, 0),
 };
 var goal = {
    type: circle(relWidth(0.9), relHeight(0.9), relSize(0.015), "green"),
@@ -73,7 +79,7 @@ var goal = {
 
 var wall = {
    // type: square(relWidth(0.3), relHeight(0.2), 1, relHeight(0.6), "black"),
-   type: line(relWidth(0.3), relHeight(0.2), relWidth(0.3), relHeight(0.7), "red"),
+   type: line(relWidth(0.2), relHeight(0.2), relWidth(0.7), relHeight(0.2), "red"),
 };
 var throwTrajectory = {
    type: line(relWidth(0.5), relHeight(0.5), relWidth(0.5), relHeight(0.5), "transparent"),
@@ -172,21 +178,12 @@ document.addEventListener("mouseup", (event) => {
 function getDistanceBetweenPoints(p1, p2) {
    return Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
 }
-function getSlopeOfLine(line) {
-   // make sure we don't divide by 0
-   if (line.startpoint.x == line.endpoint.x) {
-      line.startpoint.x -= 0.0001;
-   }
-   // formula: m = (y2 - y1) / (x1 - x2) as we're technically in the xPos/yNeg Quadrant of a coordinate system
-   const m = (line.endpoint.y - line.startpoint.y) / (line.startpoint.x - line.endpoint.x);
-   return m;
-}
-window.getSlopeOfLine = getSlopeOfLine;
+
 function getNormalVectorOfLine(line) {
    var vector = {
-      x: -(line.startpoint.x - line.endpoint.x),
-      y: line.endpoint.y - line.startpoint.y,
-   };
+      x: line.endpoint.y - line.startpoint.y,
+      y: line.endpoint.x - line.startpoint.x,
+   }
    // normalize vector
    const length = Math.sqrt(Math.pow(vector.x, 2) + Math.pow(vector.y, 2));
    vector.x = vector.x / length;
@@ -194,7 +191,8 @@ function getNormalVectorOfLine(line) {
 
    return vector;
 }
-window.getNormalVoctorOfLine = getNormalVectorOfLine;
+window.getNormalVectorOfLine = getNormalVectorOfLine;
+
 function getDistancebetweenLineAndPoint(line, point) {
    // sidelenghts
    const a = getDistanceBetweenPoints(line.startpoint, line.endpoint);
@@ -216,25 +214,17 @@ function getDistancebetweenLineAndPoint(line, point) {
    // some point on the line is closest to point -> distance = altitude of triangle
    return Math.sin(B) * c;
 }
-function getAngleBetweenLines(line1, line2) {
-   const m1 = getSlopeOfLine(line1);
-   const m2 = getSlopeOfLine(line2);
-   return Math.atan((m1 - m2) / (1 + m1 * m2));
-}
-window.getAngleBetweenLines = getAngleBetweenLines;
-
 
 function bounceBallOnLine(collisionLine) {
-   // get normal vector of collision line
-   const normalVector = getNormalVectorOfLine(collisionLine);
-   // dot product provides velocity component which is perpendicular to the collision line
-   const dotProduct = normalVector.x * golfBall.vx + normalVector.y * golfBall.vy;
-   console.log(`dot product:  ${dotProduct}; normal vector: ${normalVector.x}, ${normalVector.y}`);
-   // only keep the component which is parallel to the collision line
-   // golfBall.vx = golfBall.vx - 2 * dotProduct * normalVector.x;
-   // golfBall.vy = golfBall.vy - 2 * dotProduct * normalVector.y;
-   golfBall.vx = golfBall.vx - 2 * (golfBall.vx * normalVector.x) * normalVector.x;
-   golfBall.vy = golfBall.vy - 2 * (golfBall.vy * normalVector.y) * normalVector.y;
+   var normalVector = getNormalVectorOfLine(collisionLine);
+   golfBall.velocity.x = golfBall.velocity.x - 2 * (golfBall.velocity.x * normalVector.x) * normalVector.x;
+   golfBall.velocity.y = golfBall.velocity.y - 2 * (golfBall.velocity.y * normalVector.y) * normalVector.y;
+
+   console.log(`normal vector: ${normalVector.x}, ${normalVector.y}`);
+   // move ball out of wall, so it won't get stuck
+   // const overlap = getDistancebetweenLineAndPoint(collisionLine, golfBall.type.coords);
+   // golfBall.type.coords.x = golfBall.type.coords.x + (golfBall.type.radius - overlap) * normalVector.x;
+   // golfBall.type.coords.y = golfBall.type.coords.y + (golfBall.type.radius - overlap) * normalVector.y;
 }
 
 // apply physics
@@ -286,8 +276,8 @@ function gameLoop() {
       console.log(`throw is thrown with startpoint (${throwData.throwDraggingStartPoint.x}, ${throwData.throwDraggingStartPoint.y}) and endpoint (${throwData.throwDraggingEndPoint.x}, ${throwData.throwDraggingEndPoint.y})`);
 
       // apply throw to golfBall
-      golfBall.vx = throwData.throwStrength.x;
-      golfBall.vy = throwData.throwStrength.y;
+      golfBall.velocity.x = throwData.throwStrength.x;
+      golfBall.velocity.y = throwData.throwStrength.y;
    }
 
    // TODO: implement ball collisions
@@ -305,12 +295,12 @@ function gameLoop() {
    }
 
    // move ball by it's velocity
-   golfBall.type.coords.x += golfBall.vx / fps;
-   golfBall.type.coords.y += golfBall.vy / fps;
+   golfBall.type.coords.x += golfBall.velocity.x / fps;
+   golfBall.type.coords.y += golfBall.velocity.y / fps;
 
    // decrease ball velocity
-   golfBall.vx = applyDrag(golfBall.vx);
-   golfBall.vy = applyDrag(golfBall.vy);
+   golfBall.velocity.x = applyDrag(golfBall.velocity.x);
+   golfBall.velocity.y = applyDrag(golfBall.velocity.y);
 
    // console.log(`ball velocity: (${golfBall.vx}, ${golfBall.vy})`);
 
@@ -333,7 +323,7 @@ gameLoop();
 
 //for testing purposes. TODO: remove later
 function applyVelocityToBall(vx, vy) {
-   golfBall.vx = applyDrag(vx);
-   golfBall.vy = applyDrag(vy);
+   golfBall.velocity.x = vx;
+   golfBall.velocity.y = vy;
 }
 window.applyVelocityToBall = applyVelocityToBall;
