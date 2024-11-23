@@ -20,6 +20,7 @@ function relWidth(percentage) {
 function relSize(percentage) {
    return Math.floor(canvas.width * percentage);
 }
+
 function point(x, y) {
    const obj = {
       type: "point",
@@ -28,6 +29,7 @@ function point(x, y) {
    };
    return obj;
 }
+window.point = point;
 function circle(x, y, radius, colour) {
    const obj = {
       type: "circle",
@@ -56,6 +58,7 @@ function line(startpointX, startpointY, endpointX, endpointY, colour) {
    };
    return obj;
 }
+window.line = line;
 
 //// Objects ////
 // real canvas objects //
@@ -69,7 +72,8 @@ var goal = {
 };
 
 var wall = {
-   type: square(relWidth(0.3), relHeight(0.2), 1, relHeight(0.6), "black"),
+   // type: square(relWidth(0.3), relHeight(0.2), 1, relHeight(0.6), "black"),
+   type: line(relWidth(0.3), relHeight(0.2), relWidth(0.3), relHeight(0.7), "red"),
 };
 var throwTrajectory = {
    type: line(relWidth(0.5), relHeight(0.5), relWidth(0.5), relHeight(0.5), "transparent"),
@@ -164,9 +168,73 @@ document.addEventListener("mouseup", (event) => {
    //    console.log(`Mouse button changed - Left button pressed: ${isLeftButtonPressed}`);
 });
 
-// helpers
+// Math calculations
 function getDistanceBetweenPoints(p1, p2) {
    return Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
+}
+function getSlopeOfLine(line) {
+   // make sure we don't divide by 0
+   if (line.startpoint.x == line.endpoint.x) {
+      line.startpoint.x -= 0.0001;
+   }
+   // formula: m = (y2 - y1) / (x1 - x2) as we're technically in the xPos/yNeg Quadrant of a coordinate system
+   const m = (line.endpoint.y - line.startpoint.y) / (line.startpoint.x - line.endpoint.x);
+   return m;
+}
+window.getSlopeOfLine = getSlopeOfLine;
+function getNormalVectorOfLine(line) {
+   var vector = {
+      x: -(line.startpoint.x - line.endpoint.x),
+      y: line.endpoint.y - line.startpoint.y,
+   };
+   // normalize vector
+   const length = Math.sqrt(Math.pow(vector.x, 2) + Math.pow(vector.y, 2));
+   vector.x = vector.x / length;
+   vector.y = vector.y / length;
+
+   return vector;
+}
+window.getNormalVoctorOfLine = getNormalVectorOfLine;
+function getDistancebetweenLineAndPoint(line, point) {
+   // sidelenghts
+   const a = getDistanceBetweenPoints(line.startpoint, line.endpoint);
+   const b = getDistanceBetweenPoints(line.startpoint, point);
+   const c = getDistanceBetweenPoints(point, line.endpoint);
+
+   // angles in RAD (law of cosine)
+   var B = Math.acos((a * a + c * c - b * b) / (2 * a * c));
+   var C = Math.acos((a * a + b * b - c * c) / (2 * a * b));
+
+  if (B > Math.PI / 2) {
+      // point is on the right side of the line -> distance to endpoint of line is shortest
+      return c;
+   }
+   if (C > Math.PI / 2) {
+      // point is on the left side of the line -> distance to startpoint of line is shortest
+      return b;
+   }
+   // some point on the line is closest to point -> distance = altitude of triangle
+   return Math.sin(B) * c;
+}
+function getAngleBetweenLines(line1, line2) {
+   const m1 = getSlopeOfLine(line1);
+   const m2 = getSlopeOfLine(line2);
+   return Math.atan((m1 - m2) / (1 + m1 * m2));
+}
+window.getAngleBetweenLines = getAngleBetweenLines;
+
+
+function bounceBallOnLine(collisionLine) {
+   // get normal vector of collision line
+   const normalVector = getNormalVectorOfLine(collisionLine);
+   // dot product provides velocity component which is perpendicular to the collision line
+   const dotProduct = normalVector.x * golfBall.vx + normalVector.y * golfBall.vy;
+   console.log(`dot product:  ${dotProduct}; normal vector: ${normalVector.x}, ${normalVector.y}`);
+   // only keep the component which is parallel to the collision line
+   // golfBall.vx = golfBall.vx - 2 * dotProduct * normalVector.x;
+   // golfBall.vy = golfBall.vy - 2 * dotProduct * normalVector.y;
+   golfBall.vx = golfBall.vx - 2 * (golfBall.vx * normalVector.x) * normalVector.x;
+   golfBall.vy = golfBall.vy - 2 * (golfBall.vy * normalVector.y) * normalVector.y;
 }
 
 // apply physics
@@ -223,6 +291,12 @@ function gameLoop() {
    }
 
    // TODO: implement ball collisions
+   if (getDistancebetweenLineAndPoint(wall.type, golfBall.type.coords) < golfBall.type.radius) {
+      console.log("ball hit wall");
+      bounceBallOnLine(wall.type);
+   }
+   // const distance = getDistancebetweenLineAndPoint(wall, golfBall.type.coords);
+   // console.log(`distance to wall: ${distance}`);
 
    // check if ball is in goal
    if (checkIfPointIsInCircle(golfBall.type.coords, goal)) {
