@@ -90,8 +90,8 @@ function startGame() {
       y: Math.floor(amountOfPanelsVertical / 2),
 
       // snake velocity. moves one grid length every frame in either the x or y direction
-      dx: 0,
-      dy: -1,
+      dx: 1,
+      dy: 0,
 
       // keep track of all grids the snake body occupies
       cells: [],
@@ -108,7 +108,7 @@ function startGame() {
    // start game
    gameIsRunning = true;
    updateSnakeDeathCells(gameIsConfined);
-   requestAnimationFrame(loop);
+   loop();
 }
 
 function getIndividualPanel(x, y) {
