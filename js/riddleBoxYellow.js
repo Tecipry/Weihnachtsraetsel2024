@@ -250,16 +250,12 @@ function applyDrag(velocity) {
 function bounceBallAgainstLine(collisionLine) {
    var normalVector = getNormalVectorOfLinePointingAwayFromPoint(collisionLine, golfBall.type.coords);
 
-   var penetrationDepth = golfBall.type.radius - getDistancebetweenLineAndPoint(collisionLine, golfBall.type.coords);
-
    // Move the ball's position to the point where it first intersected the wall
+   var penetrationDepth = golfBall.type.radius - getDistancebetweenLineAndPoint(collisionLine, golfBall.type.coords);
    golfBall.type.coords.x -= normalVector.x * penetrationDepth;
    golfBall.type.coords.y -= normalVector.y * penetrationDepth;
 
    // Reflect the ball's velocity across the normal vector
-   // const dotProduct = normalVector.x * golfBall.velocity.x + normalVector.y * golfBall.velocity.y;
-   // golfBall.velocity.x = golfBall.velocity.x - 2 * dotProduct * normalVector.x;
-   // golfBall.velocity.y = golfBall.velocity.y - 2 * dotProduct * normalVector.y;
    golfBall.velocity = reflectVectorOverNormalVector(golfBall.velocity, normalVector);
 }
 function bounceBallAgainstCircle(collisionCircle) {
@@ -288,6 +284,11 @@ function bounceBallAgainstCircle(collisionCircle) {
 
    // Vector from C3 to center of collision circle is normal vector
    const normalVector = getNormalVectorOfLine(line(C3.x, C3.y, collisionCircle.coords.x, collisionCircle.coords.y, "transparent"));
+
+   // Move the ball's position to the point where it first intersected the circle
+   var penetrationDepth = r2 - r1;
+   golfBall.type.coords.x -= normalVector.x * penetrationDepth;
+   golfBall.type.coords.y -= normalVector.y * penetrationDepth;
 
    // reflect the ball's velocity across the normal vector
    golfBall.velocity = reflectVectorOverNormalVector(golfBall.velocity, normalVector);
