@@ -91,8 +91,7 @@ var wall4 = {
 };
 var pillar1 = {
    type: circle(relWidth(0.3), relHeight(0.5), relSize(0.02), "red"),
-}
-
+};
 
 var throwTrajectory = {
    type: line(relWidth(0.5), relHeight(0.5), relWidth(0.5), relHeight(0.5), "transparent"),
@@ -259,40 +258,17 @@ function bounceBallAgainstLine(collisionLine) {
    golfBall.velocity = reflectVectorOverNormalVector(golfBall.velocity, normalVector);
 }
 function bounceBallAgainstCircle(collisionCircle) {
-   // calculate the two collision points between circle and ball C1 and C2
-   const r1 = collisionCircle.radius;
-   const r2 = golfBall.type.radius;
-   const base = getDistanceBetweenPoints(collisionCircle.coords, golfBall.type.coords);
-
-   // law of cosine to find angle at point C1 / C2
-   const angle = Math.acos((r1 * r1 + base * base - r2 * r2) / (2 * r1 * base));
-
-   // coordinates of C1
-   const C1x = collisionCircle.coords.x + r1 * Math.cos(angle);
-   const C1y = collisionCircle.coords.y + r1 * Math.sin(angle);
-
-   // coordinates of C2
-   const C2x = collisionCircle.coords.x - r1 * Math.cos(angle);
-   const C2y = collisionCircle.coords.y - r1 * Math.sin(angle);
-
-   // random point on line between C1 and C2 -> C3
-   const shift = Math.random();
-   const C3 = {
-      x: C1x + (C2x - C1x) * shift,
-      y: C1y + (C2y - C1y) * shift,
-   };
-
-   // Vector from C3 to center of collision circle is normal vector
-   const normalVector = getNormalVectorOfLine(line(C3.x, C3.y, collisionCircle.coords.x, collisionCircle.coords.y, "transparent"));
+   // normal vector is line between ball and circle
+   const normalLine = line(golfBall.type.coords.x, golfBall.type.coords.y, collisionCircle.coords.x, collisionCircle.coords.y);
+   const normalVector = getNormalVectorOfLine(normalLine);
 
    // Move the ball's position to the point where it first intersected the circle
-   var penetrationDepth = r2 - r1;
+   var penetrationDepth = golfBall.type.radius - getDistanceBetweenPoints(golfBall.type.coords, collisionCircle.coords);
    golfBall.type.coords.x -= normalVector.x * penetrationDepth;
    golfBall.type.coords.y -= normalVector.y * penetrationDepth;
 
    // reflect the ball's velocity across the normal vector
    golfBall.velocity = reflectVectorOverNormalVector(golfBall.velocity, normalVector);
-
 }
 function handleBallColliosionWithObject(obj) {
    if (obj.type == "line") {
@@ -360,10 +336,10 @@ function gameLoop() {
    // check if ball collides with a objects it should bounce off of
 
    for (const obj of collisionObjects) {
-       if (checkIfObjectCollidesWithBall(obj.type)) {
+      if (checkIfObjectCollidesWithBall(obj.type)) {
          console.log("ball collides with object");
          handleBallColliosionWithObject(obj.type);
-       }
+      }
    }
 
    // check if ball is in goal
