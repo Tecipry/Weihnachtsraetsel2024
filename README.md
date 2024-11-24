@@ -41,7 +41,7 @@ HEX in dezimal umwandeln ergibt Antwortcode
 -  Erklärung für Umrechnung zwischen hex und dez (Video?) (als Code)
 -  Rechner hex zu dezimal (https://bin-dez-hex-umrechner.de/) (als Code)
 
-## Rätsel 2 (grün)
+## Rätsel 2 (grün) -> Done
 
 snake game
 
@@ -76,6 +76,10 @@ Golf -> 6 level;
 -  eine Zahl bei Abschluss des Levels -> gibt Tipp, dass Levelzahl wichtig ist
 
 ## Rätsel 4 (orange)
+
+-  Hintergrund: Bild von vielen verschiedenen Dingen, Scrabbles etc (Suchbild)
+-  Maus beleuchtet gewissen Radius
+-  an bestimmten Stellen stehen auf verschiedenen tabs verschiedene Zahlen -> Code ergibt sich
 
 # random ideen
 
