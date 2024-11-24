@@ -79,7 +79,7 @@ var goal = {
 
 var wall = {
    // type: square(relWidth(0.3), relHeight(0.2), 1, relHeight(0.6), "black"),
-   type: line(relWidth(0.2), relHeight(0.2), relWidth(0.7), relHeight(0.2), "red"),
+   type: line(relWidth(0.2), relHeight(0.2), relWidth(0.5), relHeight(0.7), "red"),
 };
 var throwTrajectory = {
    type: line(relWidth(0.5), relHeight(0.5), relWidth(0.5), relHeight(0.5), "transparent"),
@@ -161,17 +161,14 @@ document.addEventListener("mousemove", (event) => {
    mousePosition = convertPageMousePositionToCanvasMousePosition(mousePosition);
    isLeftMouseButtonPressed = getLeftMouseButtonState(event);
 
-   //    console.log(`Mouse position: ${mousePosition.x}, ${mousePosition.y} - Left button pressed: ${isLeftButtonPressed}`);
    mousePointer.type.coords.x = mousePosition.x;
    mousePointer.type.coords.y = mousePosition.y;
 });
 document.addEventListener("mousedown", (event) => {
    isLeftMouseButtonPressed = getLeftMouseButtonState(event);
-   //    console.log(`Mouse button changed - Left button pressed: ${isLeftButtonPressed}`);
 });
 document.addEventListener("mouseup", (event) => {
    isLeftMouseButtonPressed = getLeftMouseButtonState(event);
-   //    console.log(`Mouse button changed - Left button pressed: ${isLeftButtonPressed}`);
 });
 
 // Math calculations
@@ -181,9 +178,9 @@ function getDistanceBetweenPoints(p1, p2) {
 
 function getNormalVectorOfLine(line) {
    var vector = {
-      x: line.endpoint.y - line.startpoint.y,
+      x: -(line.endpoint.y - line.startpoint.y),
       y: line.endpoint.x - line.startpoint.x,
-   }
+   };
    // normalize vector
    const length = Math.sqrt(Math.pow(vector.x, 2) + Math.pow(vector.y, 2));
    vector.x = vector.x / length;
@@ -191,7 +188,18 @@ function getNormalVectorOfLine(line) {
 
    return vector;
 }
-window.getNormalVectorOfLine = getNormalVectorOfLine;
+function getNormalVectorOfLinePointingAwayFromPoint(line, point) {
+   var vector = getNormalVectorOfLine(line);
+   // rotate vector if point is on the left side of the line
+   if (vector.x * (point.x - line.startpoint.x) + vector.y * (point.y - line.startpoint.y) > 0) {
+      vector.x = -vector.x;
+      vector.y = -vector.y;
+   }
+
+   return vector;
+}
+
+
 
 function getDistancebetweenLineAndPoint(line, point) {
    // sidelenghts
@@ -203,7 +211,7 @@ function getDistancebetweenLineAndPoint(line, point) {
    var B = Math.acos((a * a + c * c - b * b) / (2 * a * c));
    var C = Math.acos((a * a + b * b - c * c) / (2 * a * b));
 
-  if (B > Math.PI / 2) {
+   if (B > Math.PI / 2) {
       // point is on the right side of the line -> distance to endpoint of line is shortest
       return c;
    }
@@ -216,15 +224,20 @@ function getDistancebetweenLineAndPoint(line, point) {
 }
 
 function bounceBallOnLine(collisionLine) {
-   var normalVector = getNormalVectorOfLine(collisionLine);
-   golfBall.velocity.x = golfBall.velocity.x - 2 * (golfBall.velocity.x * normalVector.x) * normalVector.x;
-   golfBall.velocity.y = golfBall.velocity.y - 2 * (golfBall.velocity.y * normalVector.y) * normalVector.y;
+   var normalVector = getNormalVectorOfLinePointingAwayFromPoint(collisionLine, golfBall.type.coords);
 
-   console.log(`normal vector: ${normalVector.x}, ${normalVector.y}`);
-   // move ball out of wall, so it won't get stuck
-   // const overlap = getDistancebetweenLineAndPoint(collisionLine, golfBall.type.coords);
-   // golfBall.type.coords.x = golfBall.type.coords.x + (golfBall.type.radius - overlap) * normalVector.x;
-   // golfBall.type.coords.y = golfBall.type.coords.y + (golfBall.type.radius - overlap) * normalVector.y;
+   var penetrationDepth = getDistancebetweenLineAndPoint(collisionLine, golfBall.type.coords);
+
+   var penetrationDepth = getDistancebetweenLineAndPoint(collisionLine, golfBall.type.coords);
+
+   // Move the ball's position to the point where it first intersected the wall
+   golfBall.type.coords.x -= normalVector.x * penetrationDepth;
+   golfBall.type.coords.y -= normalVector.y * penetrationDepth;
+
+   // Reflect the ball's velocity across the normal vector
+   const dotProduct = normalVector.x * golfBall.velocity.x + normalVector.y * golfBall.velocity.y;
+   golfBall.velocity.x = golfBall.velocity.x - 2 * dotProduct * normalVector.x;
+   golfBall.velocity.y = golfBall.velocity.y - 2 * dotProduct * normalVector.y;
 }
 
 // apply physics
@@ -253,7 +266,6 @@ function gameLoop() {
 
    // check for throw
    if (isLeftMouseButtonPressed) {
-      console.log("throw is dragged");
       throwData.throwIsDragged = true;
       throwData.throwDraggingStartPoint.x = golfBall.type.coords.x;
       throwData.throwDraggingStartPoint.y = golfBall.type.coords.y;
@@ -268,25 +280,19 @@ function gameLoop() {
    }
    if (throwData.throwIsDragged && !isLeftMouseButtonPressed) {
       throwData.throwIsDragged = false;
+
       // calculate throw strength
       throwData.throwStrength.x = (throwData.throwDraggingEndPoint.x - throwData.throwDraggingStartPoint.x) * -1;
       throwData.throwStrength.y = (throwData.throwDraggingEndPoint.y - throwData.throwDraggingStartPoint.y) * -1;
-
-      console.log(`throw data: (X: ${throwData.throwStrength.x}, Y: ${throwData.throwStrength.y})`);
-      console.log(`throw is thrown with startpoint (${throwData.throwDraggingStartPoint.x}, ${throwData.throwDraggingStartPoint.y}) and endpoint (${throwData.throwDraggingEndPoint.x}, ${throwData.throwDraggingEndPoint.y})`);
 
       // apply throw to golfBall
       golfBall.velocity.x = throwData.throwStrength.x;
       golfBall.velocity.y = throwData.throwStrength.y;
    }
 
-   // TODO: implement ball collisions
    if (getDistancebetweenLineAndPoint(wall.type, golfBall.type.coords) < golfBall.type.radius) {
-      console.log("ball hit wall");
       bounceBallOnLine(wall.type);
    }
-   // const distance = getDistancebetweenLineAndPoint(wall, golfBall.type.coords);
-   // console.log(`distance to wall: ${distance}`);
 
    // check if ball is in goal
    if (checkIfPointIsInCircle(golfBall.type.coords, goal)) {
@@ -301,8 +307,6 @@ function gameLoop() {
    // decrease ball velocity
    golfBall.velocity.x = applyDrag(golfBall.velocity.x);
    golfBall.velocity.y = applyDrag(golfBall.velocity.y);
-
-   // console.log(`ball velocity: (${golfBall.vx}, ${golfBall.vy})`);
 
    // draw objects
    drawObject(wall);
