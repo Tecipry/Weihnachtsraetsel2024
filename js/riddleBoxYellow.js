@@ -1,7 +1,11 @@
 import * as paramUtils from "./utils/paramUtils.js";
+import * as levels from "./golfLevelLayouts.js";
+import { vector, point, circle, square, line, relHeight, relWidth, relSize, canvas } from "./utils/golfUtils.js";
 
 const level = paramUtils.getParamValue("level");
-const canvas = document.getElementById("golfCanvas");
+const levelData = levels.levels[level];
+
+const ctx = canvas.getContext("2d");
 
 var isLeftMouseButtonPressed = false;
 
@@ -9,97 +13,38 @@ var isLeftMouseButtonPressed = false;
 const fps = 200;
 const dragFactorPerSecond = 0.5;
 const dragFactorPerFrame = Math.pow(dragFactorPerSecond, 1 / fps);
-
-// used to draw relative to the canvas and not in total pixels
-function relHeight(percentage) {
-   return Math.floor(canvas.height * percentage);
-}
-function relWidth(percentage) {
-   return Math.floor(canvas.width * percentage);
-}
-function relSize(percentage) {
-   return Math.floor(canvas.width * percentage);
-}
-
-function vector(x, y) {
-   const obj = {
-      x: x,
-      y: y,
-   };
-   return obj;
-}
-function point(x, y) {
-   const obj = {
-      type: "point",
-      x: x,
-      y: y,
-   };
-   return obj;
-}
-window.point = point;
-function circle(x, y, radius, colour) {
-   const obj = {
-      type: "circle",
-      coords: point(x, y),
-      radius: radius,
-      colour: colour,
-   };
-   return obj;
-}
-function square(x, y, width, height, colour) {
-   const obj = {
-      type: "square",
-      coords: point(x, y),
-      width: width,
-      height: height,
-      colour: colour,
-   };
-   return obj;
-}
-function line(startpointX, startpointY, endpointX, endpointY, colour) {
-   const obj = {
-      type: "line",
-      startpoint: point(startpointX, startpointY),
-      endpoint: point(endpointX, endpointY),
-      colour: colour,
-   };
-   return obj;
-}
-window.line = line;
+const maxThrowStrength = 800;
 
 //// Objects ////
 // real canvas objects //
 var golfBall = {
-   type: circle(relWidth(0.5), relHeight(0.5), relSize(0.01), "white"),
+   type: circle(levelData.ballStartLocation.x, levelData.ballStartLocation.y, relSize(0.01), "white"),
    velocity: vector(0, 0),
 };
-window.golfBall = golfBall;
 var goal = {
-   type: circle(relWidth(0.9), relHeight(0.9), relSize(0.015), "green"),
+   type: circle(levelData.goalLocation.x, levelData.goalLocation.y, relSize(0.015), "green"),
 };
-var wall1 = {
-   type: line(relWidth(0.5), relHeight(0.1), relWidth(0.1), relHeight(0.5), "red"),
-};
-var wall2 = {
-   type: line(relWidth(0.5), relHeight(0.1), relWidth(0.9), relHeight(0.5), "red"),
-};
-var wall3 = {
-   type: line(relWidth(0.9), relHeight(0.5), relWidth(0.5), relHeight(0.9), "red"),
-};
-var wall4 = {
-   type: line(relWidth(0.5), relHeight(0.9), relWidth(0.1), relHeight(0.5), "red"),
-};
-var pillar1 = {
-   type: circle(relWidth(0.3), relHeight(0.5), relSize(0.02), "red"),
+var throwIndicator = {
+   type: circle(relWidth(0.7), relHeight(0.5), relSize(0.005), "transparent"),
 };
 
-var throwTrajectory = {
-   type: line(relWidth(0.5), relHeight(0.5), relWidth(0.5), relHeight(0.5), "transparent"),
+// canvas borders are not drawn, as the canvas object already has a border proberty which is drawn
+var canvasBorderTop = {
+   type: line(relWidth(0), relHeight(0), relWidth(1), relHeight(0), "transparent"),
+};
+var canvasBorderBottom = {
+   type: line(relWidth(0), relHeight(1), relWidth(1), relHeight(1), "transparent"),
+};
+var canvasBorderLeft = {
+   type: line(relWidth(0), relHeight(0), relWidth(0), relHeight(1), "transparent"),
+};
+var canvasBorderRight = {
+   type: line(relWidth(1), relHeight(0), relWidth(1), relHeight(1), "transparent"),
 };
 
 // virtual objects //
 var mousePointer = {
-   type: circle(relWidth(0.5), relHeight(0.5), 1, "red"),
+   type: circle(relWidth(0.5), relHeight(0.5), 1, "transparent"),
 };
 var throwData = {
    throwIsDragged: false,
@@ -112,9 +57,17 @@ var throwData = {
 };
 
 // list of all objects the ball should collide with //
-var collisionObjects = [wall1, wall2, wall3, wall4, pillar1];
+var collisionObjects = [canvasBorderTop, canvasBorderBottom, canvasBorderLeft, canvasBorderRight];
+for (var key in levelData.obstacles) {
+   collisionObjects.push(levelData.obstacles[key]);
+}
 
-const ctx = canvas.getContext("2d");
+// list of all objects that should be drawn on the canvas //
+var drawObjects = [throwIndicator, goal, golfBall];
+for (var key in levelData.decorations) {
+   drawObjects.push(levelData.decorations[key]);
+}
+drawObjects = drawObjects.concat(collisionObjects);
 
 function drawCircleObject(obj) {
    ctx.beginPath();
@@ -129,6 +82,7 @@ function drawSquareObject(obj) {
 }
 function drawLineObject(obj) {
    ctx.beginPath();
+   ctx.lineWidth = 2;
    ctx.moveTo(obj.startpoint.x, obj.startpoint.y);
    ctx.lineTo(obj.endpoint.x, obj.endpoint.y);
    ctx.strokeStyle = obj.colour;
@@ -237,6 +191,15 @@ function getDistancebetweenLineAndPoint(line, point) {
    // some point on the line is closest to point -> distance = altitude of triangle
    return Math.sin(B) * c;
 }
+function calculateThrowPositionAfterTime(time) {
+   //formula for motion after time x: distance = (initial velocity) * (1 - acceleration^time) / (1 - acceleration)
+   const slowdownPerFrame = -dragFactorPerFrame;
+   const distance = {
+      x: (throwData.throwStrength.x * (1 - Math.pow(slowdownPerFrame, time))) / (1 - slowdownPerFrame),
+      y: (throwData.throwStrength.y * (1 - Math.pow(slowdownPerFrame, time))) / (1 - slowdownPerFrame),
+   };
+   return point(distance.x + golfBall.type.coords.x, distance.y + golfBall.type.coords.y);
+}
 
 // apply physics
 function applyDrag(velocity) {
@@ -282,7 +245,7 @@ function handleBallColliosionWithObject(obj) {
 
 // collision checks
 function checkIfPointIsInCircle(point, circle) {
-   if (getDistanceBetweenPoints(point, circle.type.coords) < circle.type.radius) {
+   if (getDistanceBetweenPoints(point, circle.coords) < circle.radius) {
       return true;
    }
    return false;
@@ -308,33 +271,49 @@ function gameLoop() {
    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
    // check for throw
-   if (isLeftMouseButtonPressed) {
+   if (isLeftMouseButtonPressed && checkIfPointIsInCircle(mousePointer.type.coords, golfBall.type)) {
       throwData.throwIsDragged = true;
+   }
+   // cancel throw if mouse is released within circle
+   if (!isLeftMouseButtonPressed && checkIfPointIsInCircle(mousePointer.type.coords, golfBall.type)) {
+      throwData.throwIsDragged = false;
+      throwIndicator.type.colour = "transparent";
+   }
+   // throw is dragged
+   if (throwData.throwIsDragged) {
+      console.log("dragging throw");
       throwData.throwDraggingStartPoint.x = golfBall.type.coords.x;
       throwData.throwDraggingStartPoint.y = golfBall.type.coords.y;
       throwData.throwDraggingEndPoint.x = mousePointer.type.coords.x;
       throwData.throwDraggingEndPoint.y = mousePointer.type.coords.y;
 
-      throwTrajectory.type.startpoint.x = throwData.throwDraggingStartPoint.x;
-      throwTrajectory.type.startpoint.y = throwData.throwDraggingStartPoint.y;
-      throwTrajectory.type.endpoint.x = throwData.throwDraggingEndPoint.x;
-      throwTrajectory.type.endpoint.y = throwData.throwDraggingEndPoint.y;
-      throwTrajectory.type.colour = "red";
+      // calculate throw strength and limit it
+      throwData.throwStrength.x = (throwData.throwDraggingEndPoint.x - throwData.throwDraggingStartPoint.x) * -4;
+      throwData.throwStrength.y = (throwData.throwDraggingEndPoint.y - throwData.throwDraggingStartPoint.y) * -4;
+
+      const throwStrengthLength = Math.sqrt(Math.pow(throwData.throwStrength.x, 2) + Math.pow(throwData.throwStrength.y, 2));
+      if (throwStrengthLength > maxThrowStrength) {
+         const factor = maxThrowStrength / throwStrengthLength;
+         throwData.throwStrength.x = throwData.throwStrength.x * factor;
+         throwData.throwStrength.y = throwData.throwStrength.y * factor;
+      }
+
+      throwIndicator.type.coords = calculateThrowPositionAfterTime(fps / 2); // theoretical ball position after half a second
+      throwIndicator.type.colour = "gray";
    }
+   //drag is released
    if (throwData.throwIsDragged && !isLeftMouseButtonPressed) {
+      console.log("throw released");
       throwData.throwIsDragged = false;
+      throwIndicator.type.colour = "transparent";
 
-      // calculate throw strength
-      throwData.throwStrength.x = (throwData.throwDraggingEndPoint.x - throwData.throwDraggingStartPoint.x) * -1;
-      throwData.throwStrength.y = (throwData.throwDraggingEndPoint.y - throwData.throwDraggingStartPoint.y) * -1;
-
-      // apply throw to golfBall
       golfBall.velocity.x = throwData.throwStrength.x;
       golfBall.velocity.y = throwData.throwStrength.y;
    }
 
-   // check if ball collides with a objects it should bounce off of
+   // TODO: add limitation to umber of throws
 
+   // check if ball collides with a objects it should bounce off of
    for (const obj of collisionObjects) {
       if (checkIfObjectCollidesWithBall(obj.type)) {
          console.log("ball collides with object");
@@ -343,7 +322,7 @@ function gameLoop() {
    }
 
    // check if ball is in goal
-   if (checkIfPointIsInCircle(golfBall.type.coords, goal)) {
+   if (checkIfPointIsInCircle(golfBall.type.coords, goal.type)) {
       console.log("ball is in goal");
       // TODO: add win logic
    }
@@ -357,18 +336,11 @@ function gameLoop() {
    golfBall.velocity.y = applyDrag(golfBall.velocity.y);
 
    // draw objects
-   drawObject(wall1);
-   drawObject(wall2);
-   drawObject(wall3);
-   drawObject(wall4);
-   drawObject(pillar1);
-   drawObject(goal);
-   drawObject(golfBall);
-   if (throwData.throwIsDragged) {
-      drawObject(throwTrajectory);
+   for (const obj of drawObjects) {
+      drawObject(obj);
    }
 
-   drawObject(mousePointer);
+   // drawObject(mousePointer);
 
    // trigger new frame
    const frameRuntime = Date.now() - time;
