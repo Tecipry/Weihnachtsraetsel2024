@@ -63,7 +63,7 @@ for (var key in levelData.obstacles) {
 }
 
 // list of all objects that should be drawn on the canvas //
-var drawObjects = [throwIndicator, goal, golfBall];
+var drawObjects = [goal, throwIndicator, golfBall];
 for (var key in levelData.decorations) {
    drawObjects.push(levelData.decorations[key]);
 }
