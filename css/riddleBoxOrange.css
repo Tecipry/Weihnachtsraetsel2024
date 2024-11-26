@@ -1,25 +1,3 @@
-/* .puzzle-container,
-.target-container {
-   display: grid;
-   gap: 2px;
-   border: 1px solid #ccc;
-   margin: 20px auto;
+body {
+   background-color: var(--tea_green);
 }
-.puzzle-container {
-   grid-template-columns: repeat(4, 384px);
-   grid-template-rows: repeat(4, 384px);
-}
-.target-container {
-   grid-template-columns: repeat(4, 384px);
-   grid-template-rows: repeat(4, 384px);
-   border: 2px dashed #ccc;
-}
-.piece {
-   width: 384px;
-   height: 384px;
-   background-size: 1536px 1536px;
-   cursor: grab;
-}
-.piece.dragging {
-   opacity: 0.5;
-} */

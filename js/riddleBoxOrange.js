@@ -27,77 +27,13 @@ setInterval(function() {
 
 
 
-// const puzzleContainer = document.getElementById('puzzle-container');
-// const targetContainer = document.getElementById('target-container');
-// const imgSrc = "../assets/pictures/cropped.png"; // Replace with your image path
+const searchImageContainer = document.getElementById("searchImageContainer");
 
-// const gridSize = 4; // 4x4 puzzle
-// const pieceSize = 384;
+var screenWidth = window.innerWidth * 0.8;
+screenWidth += 16 - screenWidth%16;
+var screenHeight = screenWidth / 16 * 9;
 
-// // Create pieces
-// const pieces = [];
-// for (let row = 0; row < gridSize; row++) {
-//   for (let col = 0; col < gridSize; col++) {
-//     const piece = document.createElement('div');
-//     piece.classList.add('piece');
-//     piece.style.backgroundImage = `url(${imgSrc})`;
-//     piece.style.backgroundPosition = `-${col * pieceSize}px -${row * pieceSize}px`;
-//     piece.dataset.row = row;
-//     piece.dataset.col = col;
-//     pieces.push(piece);
-//   }
-// }
-
-// // Shuffle pieces and add to puzzle container
-// shuffleArray(pieces).forEach(piece => puzzleContainer.appendChild(piece));
-// // pieces.forEach(piece => puzzleContainer.appendChild(piece));
-
-// // Enable drag-and-drop
-// let draggedPiece = null;
-
-// pieces.forEach(piece => {
-//   piece.draggable = true;
-
-//   piece.addEventListener('dragstart', () => {
-//     draggedPiece = piece;
-//     piece.classList.add('dragging');
-//   });
-
-//   piece.addEventListener('dragend', () => {
-//     draggedPiece = null;
-//     piece.classList.remove('dragging');
-//   });
-// });
-
-// targetContainer.addEventListener('dragover', e => e.preventDefault());
-
-// targetContainer.addEventListener('drop', e => {
-//   const target = e.target;
-//   if (target.classList.contains('piece') || target === targetContainer) {
-//     targetContainer.appendChild(draggedPiece);
-//     checkCompletion();
-//   }
-// });
-
-// // Shuffle function
-// function shuffleArray(array) {
-//   for (let i = array.length - 1; i > 0; i--) {
-//     const j = Math.floor(Math.random() * (i + 1));
-//     [array[i], array[j]] = [array[j], array[i]];
-//   }
-//   return array;
-// }
-
-// // Check if the puzzle is solved
-// function checkCompletion() {
-//   const pieces = Array.from(targetContainer.children);
-//   const isComplete = pieces.every((piece, index) => {
-//     const row = Math.floor(index / gridSize);
-//     const col = index % gridSize;
-//     return parseInt(piece.dataset.row) === row && parseInt(piece.dataset.col) === col;
-//   });
-
-//   if (isComplete) {
-//     alert('Puzzle Complete!');
-//   }
-// }
+searchImageContainer.style.width = screenWidth + "px";
+searchImageContainer.style.height = screenHeight + "px";
+searchImageContainer.style.backgroundImage = "url('../assets/pictures/background_picture1.jpg')";
+searchImageContainer.style.backgroundSize = screenWidth + "px " + screenHeight + "px";
