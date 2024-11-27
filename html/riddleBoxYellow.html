@@ -7,6 +7,7 @@
       <link rel="stylesheet" type="text/css" href="../css/style.css" />
       <link rel="stylesheet" type="text/css" href="../css/riddleBoxYellow.css" />
       <script src="../js/script.js"></script>
+      <script src="../js/riddleBoxYellow.js" type="module"></script>
       <!-- <script src="../js/riddleBoxYellow.js" type="module"></script> -->
    </head>
    
@@ -17,12 +18,17 @@
    </script>
 
       <main>
-         <button onclick="window.location.href='./golfLevel.html?level=1'">Level 1</button>
-         <button onclick="window.location.href='./golfLevel.html?level=2'">Level 2</button>
-         <button onclick="window.location.href='./golfLevel.html?level=3'">Level 3</button>
-         <button onclick="window.location.href='./golfLevel.html?level=4'">Level 4</button>
-         <button onclick="window.location.href='./golfLevel.html?level=5'">Level 5</button>
-         <button onclick="window.location.href='./golfLevel.html?level=6'">Level 6</button>
+         <button class= "disabled" id="button1">Level 1</button>
+         <button class= "disabled" id="button2">Level 2</button>
+         <button class= "disabled" id="button3">Level 3</button>
+         <button class= "disabled" id="button4">Level 4</button>
+         <button class= "disabled" id="button5">Level 5</button>
+         <button class= "disabled" id="button6">Level 6</button>
       </main>
+         <script>
+            document.addEventListener("DOMContentLoaded", () => {
+               setLevelButtons();
+            });
+         </script>
    </body>
 </html>

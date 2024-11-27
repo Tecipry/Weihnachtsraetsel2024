@@ -45,6 +45,7 @@ window.setRiddleBoxStatus = setRiddleBoxStatus;
 function clearRiddleBoxCookies() {
    cookieUtils.deleteCookie("riddleBoxesStatus");
    cookieUtils.deleteCookie("snakeGameState");
+   cookieUtils.deleteCookie("golfLevelsStatus");
    window.location.reload();
 }
 window.clearRiddleBoxCookies = clearRiddleBoxCookies;

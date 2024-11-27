@@ -1,9 +1,20 @@
 main {
-    margin: 3em auto;
+   margin: 3em auto;
 }
 
 button {
-    margin: 1em auto;
-    width: 30em;
-    height: 5em;
+   margin: 1em auto;
+   width: 30em;
+   height: 5em;
+}
+
+.disabled {
+   background-color: grey;
+}
+.disabled:hover {
+    background-color: grey;
+ }
+
+.enabled {
+   background-color: var(--hunter_green);
 }

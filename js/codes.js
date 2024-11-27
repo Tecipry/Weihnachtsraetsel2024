@@ -1,5 +1,6 @@
 import * as cookieUtils from "./utils/cookieUtils.js";
 import * as paramUtils from "./utils/paramUtils.js";
+import { enableGolfLevel } from "./riddleBoxYellow.js";
 
 function setRiddleBoxSolvedCookie(riddleBoxName) {
    const riddleBoxesStatus = cookieUtils.getCookie("riddleBoxesStatus");
@@ -20,7 +21,7 @@ function executeFunctionFromCode(functionCode) {
       setRiddleBoxSolvedCookie("riddleBoxGreen");
    }
    // yellow riddle box solved
-   else if (functionCode === "333333") {
+   else if (functionCode === "381574") {
       setRiddleBoxSolvedCookie("riddleBoxYellow");
    }
    // orange riddle box solved
@@ -30,6 +31,26 @@ function executeFunctionFromCode(functionCode) {
    // set cookie to change snakeGame to snakeGameState 1
    else if (functionCode === "215248") {
       cookieUtils.setCookie("snakeGameState", "1", 365);
+   }
+   // enable golf level 2
+   else if (functionCode === "443882") {
+      enableGolfLevel(2);
+   }
+   // enable golf level 3
+   else if (functionCode === "123061") {
+      enableGolfLevel(3);
+   }
+   // enable golf level 4
+   else if (functionCode === "771510") {
+      enableGolfLevel(4);
+   }
+   // enable golf level 5
+   else if (functionCode === "967854") {
+      enableGolfLevel(5);
+   }
+   // enable golf level 6
+   else if (functionCode === "665839") {
+      enableGolfLevel(6);
    }
 }
 
@@ -73,13 +94,20 @@ const codeTranslation = {
    // green
    215248: "Ist dir schon aufgefallen, dass die Schlange durch den Tod eine Zelle kürzer wird?<br>Ich weiß woran es liegt. Ist mir gerade aber zu viel Aufwand um es zu lösen - deswegen mache ich es einfach nicht.<br>It's a feature, not a bug ;D",
 
+   // yellow
+   443882: "Du dachtest doch nicht, dass ich nur ein Golflevel für dich habe? - Hier ist natürlich mehr für dich <3",
+   123061: "Aller guten Dinge sind doch 3 Golflevel. Es kommen noch mehr, aber erstmal sind wir beim dritten. :D",
+   771510: "Inzwischen weist du ja geübt im Golfen ;).<br>Da schaffst du auch das vierte Level",
+   967854: "Noch hast du Spaß mit Bällen vor dir. Gerade nur ein Golfball, aber man kann nie wissen was noch kommt ;)",
+   665839: "Fast geschafft! Mit diesem Golflevel hast du auch das letzte freigeschaltet. <3",
+
    //// RiddleBox solves ////
    // red
    168953: "Da habe ich echt meine Notizen durcheinander gebracht... Zum Glück konntest du den Code in dezimal umwandeln.<br>damit ist die rote Rätselbox ist gelöst ;D Die anderen schaffst du auch <3",
    // green (temp)
    214174: "Mit dem Code hast du die grüne Rätselbox gelöst. Weiter so ;D",
    // yellow (temp)
-   333333: "SUPER! Und das Rätsel der gelben Rätselbox hast du hinter dir. Proud of you ;)",
+   381574: "SUPER! Und das Rätsel der gelben Rätselbox hast du hinter dir. Proud of you ;)",
    // orange (temp)
    444444: "Das war der Code mit dem du die orangene Rätselbox löst. WUNDERBAR!",
 };

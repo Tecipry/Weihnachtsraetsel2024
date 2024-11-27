@@ -3,19 +3,36 @@ import { vector, point, circle, square, line, relHeight, relWidth, relSize } fro
 export const levels = {
    1: {
       obstacles: {
-         wall1: {
-            type: line(relWidth(0.5), relHeight(0.1), relWidth(0.9), relHeight(0.5), "red"),
+         wallTop: {
+            type: line(relWidth(0.3), relHeight(0.2), relWidth(0.7), relHeight(0.2), "black"),
          },
-         wall2: {
-            type: line(relWidth(0.9), relHeight(0.5), relWidth(0.5), relHeight(0.9), "red"),
+         wallBottom: {
+            type: line(relWidth(0.3), relHeight(0.8), relWidth(0.7), relHeight(0.8), "black"),
          },
-         wall3: {
-            type: line(relWidth(0.5), relHeight(0.9), relWidth(0.1), relHeight(0.5), "red"),
+         wallRight: {
+            type: line(relWidth(0.7), relHeight(0.2), relWidth(0.7), relHeight(0.8), "black"),
          },
-         // pillar1: {
-         //    type: circle(relWidth(0.3), relHeight(0.5), relSize(0.02), "red"),
-         // },
+         triangleWallUpper:{
+            type: line(relWidth(0.05), relHeight(0.1), relWidth(0.35), relHeight(0.5), "black"),
+         },
+         triangleWallLower:{
+            type: line(relWidth(0.05), relHeight(0.9), relWidth(0.35), relHeight(0.5), "black"),
+         },
       },
+      decorations: {},
+      ballStartLocation: {
+         x: relWidth(0.5),
+         y: relHeight(0.5),
+      },
+      goalLocation: {
+         x: relWidth(0.8),
+         y: relHeight(0.5),
+      },
+      amountOfThrows: 3,
+      numberRevealedOnCompletion: 3,
+   },
+   2: {
+      obstacles: {},
       decorations: {},
       ballStartLocation: {
          x: relWidth(0.5),
@@ -25,10 +42,63 @@ export const levels = {
          x: relWidth(0.9),
          y: relHeight(0.9),
       },
+      amountOfThrows: 5,
+      numberRevealedOnCompletion: 8,
    },
-   2: {},
-   3: {},
-   4: {},
-   5: {},
-   6: {},
+   3: {
+      obstacles: {},
+      decorations: {},
+      ballStartLocation: {
+         x: relWidth(0.5),
+         y: relHeight(0.5),
+      },
+      goalLocation: {
+         x: relWidth(0.9),
+         y: relHeight(0.9),
+      },
+      amountOfThrows: 5,
+      numberRevealedOnCompletion: 1,
+   },
+   4: {
+      obstacles: {},
+      decorations: {},
+      ballStartLocation: {
+         x: relWidth(0.5),
+         y: relHeight(0.5),
+      },
+      goalLocation: {
+         x: relWidth(0.9),
+         y: relHeight(0.9),
+      },
+      amountOfThrows: 5,
+      numberRevealedOnCompletion: 5,
+   },
+   5: {
+      obstacles: {},
+      decorations: {},
+      ballStartLocation: {
+         x: relWidth(0.5),
+         y: relHeight(0.5),
+      },
+      goalLocation: {
+         x: relWidth(0.9),
+         y: relHeight(0.9),
+      },
+      amountOfThrows: 5,
+      numberRevealedOnCompletion: 7,
+   },
+   6: {
+      obstacles: {},
+      decorations: {},
+      ballStartLocation: {
+         x: relWidth(0.5),
+         y: relHeight(0.5),
+      },
+      goalLocation: {
+         x: relWidth(0.9),
+         y: relHeight(0.9),
+      },
+      amountOfThrows: 5,
+      numberRevealedOnCompletion: 4,
+   },
 };

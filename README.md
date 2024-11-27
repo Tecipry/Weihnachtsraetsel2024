@@ -75,6 +75,8 @@ Golf -> 6 level;
 -  jedes Level enthält eine Zahl in Form des Level-layout -> Lösungscode für gelb
 -  eine Zahl bei Abschluss des Levels -> gibt Tipp, dass Levelzahl wichtig ist
 
+revealing level 2-6 through Codes
+
 ## Rätsel 4 (orange)
 
 -  Hintergrund: Bild von vielen verschiedenen Dingen, Scrabbles etc (Suchbild)
@@ -112,18 +114,24 @@ Golf -> 6 level;
       gibt drive location
 
 - Grüne Box
--  `214174`:
+   -  `214174`:
 
       revealt grüne Zahl
 
--  `215248`:
+   -  `215248`:
 
       ändert SnakeGame zu unconfined; Snake revealed nun Lösungscode für grün 
 
 - Gelbe Box
--  `333333` (temp):
+   -  `381574` (temp):
 
       revealt gelbe Zahl
+
+   -  `443882`: Level 2
+   -  `123061`: Level 3
+   -  `771510`: Level 4
+   -  `967854`: Level 5
+   -  `665839`: Level 6
 
 - Orangene Box
    - `444444` (temp):

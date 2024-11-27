@@ -1,8 +1,33 @@
 canvas {
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--rich_black);
     width: 80%;
     height: 80%;
-    border: 2px solid var(--rich_black);
     margin: 1em auto;
     display: flex;
     image-rendering: pixelated;
+    z-index: 0;
+}
+
+h1 {
+    text-align: center;
+    text-decoration: none;
+    color: var(--rich_black);
+    font-weight: 600;
+    font-size: 42px;
+    word-wrap: break-word;
+    z-index: 1;
+}
+
+h2 {
+    text-align: center;
+    text-decoration: none;
+    color: var(--rich_black);
+    font-weight: 600;
+    word-wrap: break-word;
+}
+
+button {
+    width: 40%;
 }

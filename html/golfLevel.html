@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <meta charset="UTF-8"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Weihnachtsr&auml;tsel 2024</title>
-      <link rel="stylesheet" type="text/css" href="../css/style.css"/>
-      <link rel="stylesheet" type="text/css" href="../css/golfStyles.css"/>
+      <link rel="stylesheet" type="text/css" href="../css/style.css" />
+      <link rel="stylesheet" type="text/css" href="../css/golfStyles.css" />
       <script src="../js/script.js"></script>
-      <script src="../js/riddleBoxYellow.js" type="module"></script>
+      <script src="../js/golf.js" type="module"></script>
    </head>
-   
+
    <body>
-   <div id="navBarDiv"></div>
-   <script>
-      loadNavBar();
-   </script>
-   
+      <div id="navBarDiv"></div>
+      <script>
+         loadNavBar();
+      </script>
+
       <main>
-        <canvas id="golfCanvas"></canvas>
+         <canvas id="golfCanvas"></canvas>
+
+         <div style="display: flex; justify-content: space-around; align-items: center;">
+            <div style="display: flex; justify-content: center; width: 33.33%;">
+               <h2 id="throwCounter"></h2>
+            </div>
+            <div style="display: flex; justify-content: center; width: 33.33%;">
+               <h1 id="winNumberReveal"></h1>
+            </div>
+            <div style="display: flex; justify-content: center; width: 33.33%;">
+               <button onclick="reloadLevel()">Level neu laden</button>
+            </div>
+         </div>
       </main>
    </body>
 </html>
