@@ -155,7 +155,9 @@ const codeTranslation = {
 
 export function getCodeTranslation(code) {
    if (code in codeTranslation) {
-      return codeTranslation[code];
+      let translation = codeTranslation[code];
+      translation.code = code;
+      return translation;
    }
    return null;
 }
