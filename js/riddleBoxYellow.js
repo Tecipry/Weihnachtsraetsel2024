@@ -1,7 +1,7 @@
 import * as cookieUtils from "./utils/cookieUtils.js";
 
 function getGolfLevels() {
-   const golfLevelsStatus = cookieUtils.getCookie("golfLevelsStatus");
+   const golfLevelsStatus = JSON.parse(cookieUtils.getCookie("golfLevelsStatus"));
    var enabledGolfLevels = {
       1: true,
       2: false,
@@ -11,9 +11,9 @@ function getGolfLevels() {
       6: false,
    };
    if (golfLevelsStatus === null) {
-      cookieUtils.setCookie("golfLevelsStatus", JSON.stringify(enabledGolfLevels), 365);
+      // cookieUtils.setCookie("golfLevelsStatus", JSON.stringify(enabledGolfLevels), 365);
    } else {
-      enabledGolfLevels = JSON.parse(golfLevelsStatus);
+      enabledGolfLevels = golfLevelsStatus;
    }
    return enabledGolfLevels;
 }
