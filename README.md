@@ -31,7 +31,7 @@ Huiii, du hast mich gefunden. Nicht schlecht my love. Hier, ich habe einen Code 
 oohhh, da habe ich mich im Zahlensystem vertan. Das wollte ich nicht in HEX sagen. Naja egal, du schaffst das schon. Love you!
 ```
 
-HEX in dezimal umwandeln ergibt Antwortcode
+HEX in dezimal umwandeln ergibt Antwortcode 168953
 
 
 ### Tipps:
@@ -56,7 +56,7 @@ in Video: (in morse code) (https://www.youtube.com/watch?v=rdERHBj2yQA)
       Der Vortrag ist schon in vier Tagen, da sollten wir uns noch absprechen. Ich bin mit meinem Teil bisher nur auf acht Minuten gekommen.
 ```
 
--> Code: 215248
+-> Code für grün: 215248
 
 Code ändert Snake game, sodass on death der Lösungscode für gelbe Box revealed wird
 
@@ -77,23 +77,49 @@ Golf -> 6 level;
 
 revealing level 2-6 through Codes
 
+-> Code: 381574
+
 ## Rätsel 4 (orange)
 
 -  Hintergrund: Bild von vielen verschiedenen Dingen, Scrabbles etc (Suchbild)
 -  Maus beleuchtet gewissen Radius
 -  an bestimmten Stellen stehen auf verschiedenen tabs verschiedene Zahlen -> Code ergibt sich
 
+-  Unterschiede in den Bildern:
+   - Papier auf Schreibtisch:
+      1. satz des Pythagoras mit Betohnung auf c
+      2. Dreieck mit Werten für a & b (5 & 12)
+      3. Dreieck mit Werten für a & b (5 & 12)
+   
+   - Blumen auf Schreibtisch und Wandschrank:
+      1. (2x gelb) + (1x rot, 1x blau)
+      2. (2x rot) + (2x blau)
+      3. (1x blau [4 Blätter], 1x rot [6 Blätter]) + (2x rot, 1x gelb)
+   
+   -  TicTacToe Scrabble auf Zetteln über Wandschrank + Karte:
+      -  alle TicTacToe übereinander gelegt ergeben ein Game, in dem "o" gewinnt
+      1. Karte hat x auf Land links
+      2. Karte hat o auf Land mittig-oben
+      3. Karte hat x+o (draw) auf Land unten-links
+
+   - Zettel auf Pinwand und über Wandschrank:
+      - pro Bild je 2 Zettel mit outline einer Landmasse von Karte + 2 random Zahlen dazu
+      - für Land mittig-oben auf Karte (welche o auf Bild 2 hat): 37
+   
+   - Zettel über Wandschrank:
+      1. "2:" blaue Scrabble Blume und rote daneben (ges. Anzahl der Blätter des linken Tisch-Topfes in Bild 3 -> **46**)
+      2. "1:" rotes Dreieck (Hinweis auf Pythagoras -> ges. ist Wert von c -> sqrt(5² + 12²) = **13**)
+      3. "3:" leeres TicTacToe board (TicTacToe games zusammen ergeben Land mit Zahl **37**)
+
+   --> Code für orange: 134637
+
 # random ideen
 
 -  one player Variante für Schiffe versenken
 -  drag & drop puzzle
--  Lichtquelle die der Maus folgt -> Dinge müssen gefunden werden
    -  Kombination mit einem "Was hat sich geändert". Zeit zum anschauen, aber im dunkeln. Danach ändert sich was und Licht geht an.
 -  Crossword (https://www.xwords-generator.de/en)
 -  evtl irgendwas mit windowSize
--  Golf
--  mehrere Browser Tabs müssen gleichzeitig offen sein
-   -  z.B. Code aus einem Tab im anderen eintippen o.ä.
 
 # Liste der Codes
 
@@ -123,7 +149,7 @@ revealing level 2-6 through Codes
       ändert SnakeGame zu unconfined; Snake revealed nun Lösungscode für grün 
 
 - Gelbe Box
-   -  `381574` (temp):
+   -  `381574`:
 
       revealt gelbe Zahl
 
@@ -134,6 +160,14 @@ revealing level 2-6 through Codes
    -  `665839`: Level 6
 
 - Orangene Box
-   - `444444` (temp):
+   - `134637`:
 
       revealt orangene Zahl
+
+
+# left TODO
+-  Bilder für riddleBoxOrange
+-  Codes fertigstellen
+-  physischen Adventskalender
+-  Golflevel 2 bis 6
+-  implement list of used codes

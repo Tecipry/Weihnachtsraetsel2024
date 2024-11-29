@@ -1,39 +1,78 @@
 import * as cookieUtils from "./utils/cookieUtils.js";
 
-//// Handle tab counter ////
-var tabsOpen = cookieUtils.getCookie("tabsOpen");
-window.tabsOpen = tabsOpen;
+var openedImages = JSON.parse(cookieUtils.getCookie("openedImages"));
+window.openedImages = openedImages;
 
-if (tabsOpen == null || tabsOpen == "NaN") {
-   cookieUtils.setCookie("tabsOpen", "1", 1/24); // set cookie for 1h
-} else {
-   cookieUtils.setCookie("tabsOpen", parseInt(tabsOpen) + parseInt(1))
+if (openedImages == null || openedImages == "NaN") {
+   openedImages = {
+      1: 0,
+      2: 0,
+      3: 0,
+   };
+
+   cookieUtils.setCookie("openedImages", JSON.stringify(openedImages), 365);
 }
-tabsOpen = cookieUtils.getCookie("tabsOpen");
-console.log("tabsOpen: ", tabsOpen)
+
+//// determine which image to display on this tab ////
+// choose random from the ones that have not been opened; if all have been opened, choose a random one
+var possibleImages = [];
+for (var imageIndex of Object.keys(openedImages)) {
+   if (openedImages[imageIndex] == 0) {
+      possibleImages.push(imageIndex);
+   }
+}
+if (possibleImages.length == 0) {
+   possibleImages = [1, 2, 3];
+}
+const thisTabImage = possibleImages[Math.floor(Math.random() * possibleImages.length)];
+openedImages[thisTabImage] += 1;
+cookieUtils.setCookie("openedImages", JSON.stringify(openedImages), 365);
+
+const imageLocations = {
+   1: "../assets/pictures/background_picture1.jpg",
+   2: "../assets/pictures/background_picture2.jpg",
+   3: "../assets/pictures/background_picture3.jpg",
+}
 
 window.addEventListener('beforeunload', function(event) {
-    const newTabCount = cookieUtils.getCookie('tabsOpen')
-    if (newTabCount !== null) {
-        cookieUtils.setCookie('tabsOpen', newTabCount - 1)
-    }
+   var newOpenendImages = JSON.parse(cookieUtils.getCookie('openedImages'))
+   if (newOpenendImages !== null) {
+      newOpenendImages[thisTabImage] -= 1
+      cookieUtils.setCookie('openedImages', JSON.stringify(newOpenendImages), 365)
+   }
 });
 
-//update tabsOpen once per second
-setInterval(function() {
-   tabsOpen = cookieUtils.getCookie("tabsOpen");
-   console.log("tabsOpen: ", tabsOpen)
-}, 1000);
 
-
-
+//// set image according to this tabs assigned image ////
 const searchImageContainer = document.getElementById("searchImageContainer");
 
-var screenWidth = window.innerWidth * 0.8;
+var screenWidth = window.innerWidth * 2;
 screenWidth += 16 - screenWidth%16;
 var screenHeight = screenWidth / 16 * 9;
 
-searchImageContainer.style.width = screenWidth + "px";
-searchImageContainer.style.height = screenHeight + "px";
-searchImageContainer.style.backgroundImage = "url('../assets/pictures/background_picture1.jpg')";
-searchImageContainer.style.backgroundSize = screenWidth + "px " + screenHeight + "px";
+searchImageContainer.style.width = `${screenWidth}px`;
+searchImageContainer.style.height = `${screenHeight}px`;
+searchImageContainer.style.backgroundImage = `url(${imageLocations[thisTabImage]})`;
+searchImageContainer.style.backgroundSize = `${screenWidth}px ${screenHeight}px`;
+
+
+//// Flashlight Effect ////
+//from: https://medium.com/@jay.codes/illuminating-interaction-follow-the-mouse-flashlight-hover-effect-with-minimal-code-dad28cac1479
+const flashlight = document.querySelector(".flashlight");
+const blurFilter = document.querySelector('#blur-filter feGaussianBlur');
+const illuminatedItem = document.querySelector('.illuminatedItem');
+
+const lightRadius = 200;
+const flashlightOffset = lightRadius / 2;
+const filterIntensity = 100;
+
+flashlight.style.width = flashlight.style.height = `${lightRadius}px`;
+blurFilter.setAttribute('stdDeviation', filterIntensity);
+
+const followMouseFlashlight = ({ clientX, clientY }) => {
+   const { left, top } = illuminatedItem.getBoundingClientRect();
+   flashlight.style.left = `${clientX - left - flashlightOffset}px`;
+   flashlight.style.top = `${clientY - top - flashlightOffset}px`;
+ };
+
+ window.addEventListener('mousemove', followMouseFlashlight);

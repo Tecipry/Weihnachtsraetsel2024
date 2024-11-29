@@ -25,7 +25,7 @@ function executeFunctionFromCode(functionCode) {
       setRiddleBoxSolvedCookie("riddleBoxYellow");
    }
    // orange riddle box solved
-   else if (functionCode === "444444") {
+   else if (functionCode === "134637") {
       setRiddleBoxSolvedCookie("riddleBoxOrange");
    }
    // set cookie to change snakeGame to snakeGameState 1
@@ -109,5 +109,5 @@ const codeTranslation = {
    // yellow (temp)
    381574: "SUPER! Und das Rätsel der gelben Rätselbox hast du hinter dir. Proud of you ;)",
    // orange (temp)
-   444444: "Das war der Code mit dem du die orangene Rätselbox löst. WUNDERBAR!",
+   134637: "Das war der Code mit dem du die orangene Rätselbox löst. WUNDERBAR!",
 };
