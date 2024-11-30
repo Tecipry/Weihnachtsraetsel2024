@@ -29,9 +29,9 @@ openedImages[thisTabImage] += 1;
 cookieUtils.setCookie("openedImages", JSON.stringify(openedImages), 365);
 
 const imageLocations = {
-   1: "../assets/pictures/background_picture1.jpg",
-   2: "../assets/pictures/background_picture2.jpg",
-   3: "../assets/pictures/background_picture3.jpg",
+   1: "../assets/pictures/background_1.jpg",
+   2: "../assets/pictures/background_2.jpg",
+   3: "../assets/pictures/background_3.jpg",
 }
 
 window.addEventListener('beforeunload', function(event) {
