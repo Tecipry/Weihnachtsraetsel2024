@@ -88,68 +88,167 @@ const codeTranslation = {
    111111: {
       text: "Yay, du hast die Website und auch den ersten gültigen Code gefunden. Jeder Code besteht aus 6 Ziffern und kann hier gegen einen Tipp oder eine Information eingelöst werden. Mal schauen was du findest ;D<br>Viel Erfolg <3",
       category: "general",
+      obtainedFrom: "calendar",
    },
 
    // CODES FOR RIDDLE BOX //
 
-   // red
+   //// red
    921009: {
       text: "Das war ein wirklich schönes Herz was du da gemalt hast. Dafür habe ich hier etwas für dich:<br><a href='https://drive.google.com/file/d/1WIyrvrtABBDPlPVqHq3i6eKl4_dOEnX8/view?usp=sharing' class='codeText' target='_blank' style='text-decoration: underline'>https://drive.google.com/file/d/1WIyrvrtABBDPlPVqHq3i6eKl4_dOEnX8/view?usp=sharing</a>",
       category: "riddleBoxRed",
+      obtainedFrom: "riddle",
    },
    257041: {
       text: "Du suchst nicht zufällig ein Passwort für eine Audio Datei?<br>Hier: TLOVESC",
       category: "riddleBoxRed",
+      obtainedFrom: "riddle",
    },
-
-   // green
+   
+   // tips from codes of calendar
+   792996: {
+      text: "Das Ding mit den Zahlen ärgert mich... Das hier hilft dir bestimmt <3<br><a href='https://www.youtube.com/watch?v=wvFhOI1H_xM' class='codeText' target='_blank' style='text-decoration: underline'>https://www.youtube.com/watch?v=wvFhOI1H_xM</a>",
+      category: "riddleBoxRed",
+      obtainedFrom: "calendar",
+   },
+   958577: {
+      text: "Ich weis doch, dass Mathe nicht so dein Ding ist ;D Du brauchst doch nicht selber rechnen - nutze einfach die Seite hier:<br><a href='https://bin-dez-hex-umrechner.de/' class='codeText' target='_blank' style='text-decoration: underline'>https://bin-dez-hex-umrechner.de/</a>",
+      category: "riddleBoxRed",
+      obtainedFrom: "calendar",
+   },
+   
+   
+   //// green
    215248: {
       text: "Ist dir schon aufgefallen, dass die Schlange durch den Tod eine Zelle kürzer wird?<br>Ich weiß woran es liegt. Ist mir gerade aber zu viel Aufwand um es zu lösen - deswegen mache ich es einfach nicht.<br>It's a feature, not a bug ;D",
       category: "riddleBoxGreen",
+      obtainedFrom: "riddle",
    },
-
-   // yellow
+   
+   // tips from codes of calendar
+   924659: {
+      text: "Press Space to start the game!",
+      category: "riddleBoxGreen",
+      obtainedFrom: "calendar",
+   },
+   887420: {
+      text: "Ist dein Link 43 Zeichen lang? Dann ist er komplett",
+      category: "riddleBoxGreen",
+      obtainedFrom: "calendar",
+   },
+   416683: {
+      text: "Morsecode aus einem Video lesen ist schwierig. Ich habs für dich aufgeschrieben:<br>-.-- --- ..- / .... .- ...- . / - .-- --- / ..- -. .-. . .- -.. / -- . ... ... .- --. . ... ---...<br><br>-- . ... ... .- --. . / --- -. . ---...<br><br>.-- .. .-. / -... .-. .- ..- -.-. .... . -. / -. --- -.-. .... / -... .. .-. -. . -. / ..- -. -.. / -.-. .... .. .--. ... .-.-.- / .... .- -... . / -.. .. .-. / -.. .. . / ..-. ..- . -. ..-. / . ..- .-. --- / .-- .. . -.. . .-. / .- ..- ..-. / -.. . -. / - .. ... -.-. .... / --. . .-.. . --. - .-.-.- / ... --- .-.. .-.. - . / .-. . .. -.-. .... . -. .-.-.-<br><br>-- . ... ... .- --. . / - .-- --- ---...<br><br>-.. . .-. / ...- --- .-. - .-. .- --. / .. ... - / ... -.-. .... --- -. / .. -. / ...- .. . .-. / - .- --. . -. --..-- / -.. .- / ... --- .-.. .-.. - . -. / .-- .. .-. / ..- -. ... / -. --- -.-. .... / .- -... ... .--. .-. . -.-. .... . -. .-.-.- / .. -.-. .... / -... .. -. / -- .. - / -- . .. -. . -- / - . .. .-.. / -... .. ... .... . .-. / -. ..- .-. / .- ..- ..-. / .- -.-. .... - / -- .. -. ..- - . -. / --. . -.- --- -- -- . -. .-.-.-",
+      category: "riddleBoxGreen",
+      obtainedFrom: "calendar",
+   },
+   476311: {
+      text: "Ich bin mir sicher dass du die Idee schon selber hattest my smart girl <3. Einen Morsecode translator habe ich trotzdem für dich:<br><a href='https://morsecodee.com/de' class='codeText' target='_blank' style='text-decoration: underline'>https://morsecodee.com/de</a>",
+      category: "riddleBoxGreen",
+      obtainedFrom: "calendar",
+   },
+   608651: {
+      text: "Ich hoffe doch, dass dir die Box nicht zu schwer wird. Vergiss nicht dass du nach 6 Zahlan für den Lösungscode suchst. Denk nicht zu kompliziert, sondern lies sie einfach aus dem Text ;D",
+      category: "riddleBoxGreen",
+      obtainedFrom: "calendar",
+   },
+   
+   //// yellow
    443882: {
       text: "Du dachtest doch nicht, dass ich nur ein Golflevel für dich habe? - Hier ist natürlich mehr für dich <3",
       category: "riddleBoxYellow",
+      obtainedFrom: "calendar",
    },
    123061: {
       text: "Aller guten Dinge sind doch 3 Golflevel. Es kommen noch mehr, aber erstmal sind wir beim dritten. :D",
       category: "riddleBoxYellow",
+      obtainedFrom: "calendar",
    },
    771510: {
       text: "Inzwischen weist du ja geübt im Golfen ;).<br>Da schaffst du auch das vierte Level",
       category: "riddleBoxYellow",
+      obtainedFrom: "calendar",
    },
    967854: {
       text: "Noch hast du Spaß mit Bällen vor dir. Gerade nur ein Golfball, aber man kann nie wissen was noch kommt ;)",
       category: "yeriddleBoxYellowllow",
+      obtainedFrom: "calendar",
    },
    665839: {
       text: "Fast geschafft! Mit diesem Golflevel hast du auch das letzte freigeschaltet. <3",
       category: "riddleBoxYellow",
+      obtainedFrom: "calendar",
    },
-
+   
+   // tips from codes of calendar
+   
+   //// orange
+   
+   // tips from codes of calendar
+   113318: {
+      text: "Das Bild ist größer als dein Bildschirm. Scrolle etwa herum und schau dich um ;)",
+      category: "riddleBoxOrange",
+      obtainedFrom: "calendar",
+   },
+   912389: {
+      text: "Lade Mal den tab neu - oder dupliziere ihn sogar. Manchmal braucht man einfach eine andere Perspektive um die Dinge klarer zu sehen.",
+      category: "riddleBoxOrange",
+      obtainedFrom: "calendar",
+   },
+   677929: {
+      text: "Schau dir die Mathe Hausaufgaben auf dem Tisch an. Was ist gesucht?",
+      category: "riddleBoxOrange",
+      obtainedFrom: "calendar",
+   },
+   984652: {
+      text: "Die römischen Zahlen stehen übrigens für die Reihenfolge o.O<br>Sortier alles richtig zusammen und du hast einen Code gefunden.",
+      category: "riddleBoxOrange",
+      obtainedFrom: "calendar",
+   },
+   494480: {
+      text: "TicTacToe ist ja eigentlich ein eher langweiliges Spiel. Aber wenn man es über mehrere Felder spielt, verliert man schnell den Überblick und sieht erst den Gewinner, wenn man alle Felder zusammenbringt.",
+      category: "riddleBoxOrange",
+      obtainedFrom: "calendar",
+   },
+   461479: {
+      text: "Bunte Blumen machen jedes Zimmer schöner. Aber den einen Topf mag ich besonders ;)",
+      category: "riddleBoxOrange",
+      obtainedFrom: "calendar",
+   },
+   682614: {
+      text: "Manchmal fühlt sich TicTacToe fast wie eine Karte an. Man muss nur den richtigen Platz finden um sein Zeichen zu setzen.",
+      category: "riddleBoxOrange",
+      obtainedFrom: "calendar",
+   },
+   227625: {
+      text: "Zähl doch Mal die Blütenblätter <3",
+      category: "riddleBoxOrange",
+      obtainedFrom: "calendar",
+   },
+   
    //// RiddleBox solves ////
    // red
    168953: {
       text: "Da habe ich echt meine Notizen durcheinander gebracht... Zum Glück konntest du den Code in dezimal umwandeln.<br>damit ist die rote Rätselbox ist gelöst ;D Die anderen schaffst du auch <3",
       category: "riddleBoxRed",
+      obtainedFrom: "riddle",
    },
-   // green (temp)
+   // green
    214174: {
       text: "Mit dem Code hast du die grüne Rätselbox gelöst. Weiter so ;D",
       category: "riddleBoxGreen",
+      obtainedFrom: "riddle",
    },
-   // yellow (temp)
+   // yellow
    381574: {
       text: "SUPER! Und das Rätsel der gelben Rätselbox hast du hinter dir. Proud of you ;)",
       category: "riddleBoxYellow",
+      obtainedFrom: "riddle",
    },
-   // orange (temp)
+   // orange
    134637: {
       text: "Das war der Code mit dem du die orangene Rätselbox löst. WUNDERBAR!",
       category: "riddleBoxOrange",
+      obtainedFrom: "riddle",
    },
 };
 

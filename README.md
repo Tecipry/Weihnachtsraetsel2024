@@ -63,8 +63,7 @@ Code ändert Snake game, sodass on death der Lösungscode für gelbe Box reveale
 ### Tipps:
 
 -  Press Space to start the game
--  Reihenfolge der Snake Elemente erklären
--  Information, dass ein YouTube Video gesucht wird (als Code)
+-  Länge der gesuchten Zeichenkette (43 char)
 -  morseCode aus dem Video aus txt (als Code)
 -  morseCode translator (https://morsecodee.com/de) (als Code)
 -  Hinweis, dass Zahlen im Text sind (Video zu simplen Verschlüsselungstechniken?) (als Code)
@@ -76,11 +75,6 @@ Golf -> 6 level;
 -  eine Zahl bei Abschluss des Levels -> gibt Tipp, dass Levelzahl wichtig ist
 
 revealing level 2-6 through Codes
-
--> Code: 381574
-
-## Rätsel 4 (orange)
-
 -  Hintergrund: Bild von vielen verschiedenen Dingen, Scrabbles etc (Suchbild)
 -  Maus beleuchtet gewissen Radius
 -  an bestimmten Stellen stehen auf verschiedenen tabs verschiedene Zahlen -> Code ergibt sich
@@ -113,6 +107,16 @@ revealing level 2-6 through Codes
 
    --> Code für orange: 134637
 
+### Tipps:
+-  Das Bild ist größer als das Fenster
+-  dupliziere den Tab und sieh was passiert
+-  Pythagoras changes
+-  TicTacToe Board zusammenführen
+-  TicTacToe hängt mit Karte zusammen
+-  Blumen zuordnen
+-  Blüttenblätter zählen
+-  römische Zahlen geben Reihenfolge vor
+
 # random ideen
 
 -  one player Variante für Schiffe versenken
@@ -138,6 +142,14 @@ revealing level 2-6 through Codes
    -  `921009`: 
 
       gibt drive location
+   
+   -  `792996`: 
+
+      Hex zu dez Erklärvideo
+   
+   -  `958577`:
+
+      Hex zu dez rechner
 
 - Grüne Box
    -  `214174`:
@@ -146,7 +158,27 @@ revealing level 2-6 through Codes
 
    -  `215248`:
 
-      ändert SnakeGame zu unconfined; Snake revealed nun Lösungscode für grün 
+      ändert SnakeGame zu unconfined; Snake revealed nun Lösungscode für grün
+
+   -  `924659`:
+
+      space startet game
+   
+   -  `887420`:
+
+      Länge des yt Links
+
+   -  `416683`:
+
+      morsecode text zu yt video
+
+   -  `476311`:
+
+      website morsecode übersetzen
+   
+   -  `608651`:
+
+      Hinweis auf 6 Zahlen im text
 
 - Gelbe Box
    -  `381574`:
@@ -163,10 +195,41 @@ revealing level 2-6 through Codes
    - `134637`:
 
       revealt orangene Zahl
+   
+   -  `113318`:
+
+      Bild ist größer als screen
+
+   -  `912389`:
+
+      tab neuladen oder duplizieren
+   
+   -  `677929`:
+
+      Mathe auf Tisch
+   
+   -  `984652`:
+
+      römische Zahlen
+   
+   -  `494480`:
+
+      TicTacToe übereinander legen
+
+   -  `461479`:
+
+      wink zu Blumen
+   
+   -  `682614`:
+
+      TicTacToe hängt mit Karte zusammen
+
+   -  `227625`:
+
+      Anzahl Blütenblätter
 
 
 # left TODO
--  Bilder für riddleBoxOrange
 -  Codes fertigstellen
 -  physischen Adventskalender
 -  Golflevel 2 bis 6

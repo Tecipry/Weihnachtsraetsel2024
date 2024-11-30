@@ -28,9 +28,17 @@ for (var code in usedCodes) {
    td1.innerHTML = usedCodes[code].code;
 
    let td2 = document.createElement("td");
-   td2.innerHTML = usedCodes[code].text;
+   var source = "Box"
+   if (usedCodes[code].obtainedFrom == "calendar") {
+      source = "Kalender"
+   }
+   td2.innerHTML = source;
+
+   let td3 = document.createElement("td");
+   td3.innerHTML = usedCodes[code].text;
 
    tr.appendChild(td1);
    tr.appendChild(td2);
+   tr.appendChild(td3);
    usedCodesTableBody.appendChild(tr);
 }
