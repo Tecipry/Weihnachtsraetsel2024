@@ -117,7 +117,7 @@ const codeTranslation = {
       obtainedFrom: "calendar",
    },
    958577: {
-      text: "Ich weis doch, dass Mathe nicht so dein Ding ist ;D Du brauchst doch nicht selber rechnen - nutze einfach die Seite hier:<br><a href='https://bin-dez-hex-umrechner.de/' class='codeText' target='_blank' style='text-decoration: underline'>https://bin-dez-hex-umrechner.de/</a>",
+      text: "Ich weiß doch, dass Mathe nicht so dein Ding ist ;D Du brauchst doch nicht selber rechnen - nutze einfach die Seite hier:<br><a href='https://bin-dez-hex-umrechner.de/' class='codeText' target='_blank' style='text-decoration: underline'>https://bin-dez-hex-umrechner.de/</a>",
       category: "riddleBoxRed",
       obtainedFrom: "calendar",
    },
@@ -152,12 +152,14 @@ const codeTranslation = {
       obtainedFrom: "calendar",
    },
    608651: {
-      text: "Ich hoffe doch, dass dir die Box nicht zu schwer wird. Vergiss nicht dass du nach 6 Zahlan für den Lösungscode suchst. Denk nicht zu kompliziert, sondern lies sie einfach aus dem Text ;D",
+      text: "Ich hoffe doch, dass dir die Box nicht zu schwer wird. Vergiss nicht dass du nach 6 Zahlan für den Code suchst. Denk nicht zu kompliziert, sondern lies sie einfach aus dem Text ;D",
       category: "riddleBoxGreen",
       obtainedFrom: "calendar",
    },
    
    //// yellow
+      
+   // tips from codes of calendar
    443882: {
       text: "Du dachtest doch nicht, dass ich nur ein Golflevel für dich habe? - Hier ist natürlich mehr für dich <3",
       category: "riddleBoxYellow",
@@ -169,7 +171,7 @@ const codeTranslation = {
       obtainedFrom: "calendar",
    },
    771510: {
-      text: "Inzwischen weist du ja geübt im Golfen ;).<br>Da schaffst du auch das vierte Level",
+      text: "Inzwischen bist du ja geübt im Golfen ;).<br>Da schaffst du auch das vierte Level",
       category: "riddleBoxYellow",
       obtainedFrom: "calendar",
    },
@@ -183,8 +185,6 @@ const codeTranslation = {
       category: "riddleBoxYellow",
       obtainedFrom: "calendar",
    },
-   
-   // tips from codes of calendar
    
    //// orange
    

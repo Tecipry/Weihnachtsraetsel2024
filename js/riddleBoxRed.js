@@ -4,7 +4,7 @@ function heartSuccessfullyDrawn(inverted) {
       document.getElementById("result").innerHTML = "Das ist ein wunderschönes Herz!<br>Hier ein Code den du nutzen kannst: 921009";
    } else {
       // inverted heart
-      document.getElementById("result").innerHTML = "whoaa, darauf bin ich gar nicht so schnell gekommen! Mit dem roten Rand entsteht in der Mitte auch ein Herz.<br>Wunderschön<br>Dafür bekommst du du einen Code: 257041";
+      document.getElementById("result").innerHTML = "whoaa, darauf bin ich gar nicht so schnell gekommen! Mit dem roten Rand entsteht in der Mitte auch ein Herz.<br>Wunderschön<br>Dafür bekommst du einen Code: 257041";
    }
 }
 
