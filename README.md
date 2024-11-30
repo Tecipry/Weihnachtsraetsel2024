@@ -230,6 +230,5 @@ revealing level 2-6 through Codes
 
 
 # left TODO
--  Codes fertigstellen
 -  physischen Adventskalender
 -  Golflevel 2 bis 6

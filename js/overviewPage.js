@@ -35,9 +35,9 @@ function setRiddleBoxStatus() {
    const riddleBoxYellow_Span = document.getElementById("riddleBoxYellow_Span");
    const riddleBoxOrange_Span = document.getElementById("riddleBoxOrange_Span");
 
-   riddleBoxRed_Span.innerHTML = riddleBoxesSolved.riddleBoxRed ? "1" : "?";
-   riddleBoxGreen_Span.innerHTML = riddleBoxesSolved.riddleBoxGreen ? "1" : "?";
-   riddleBoxYellow_Span.innerHTML = riddleBoxesSolved.riddleBoxYellow ? "1" : "?";
+   riddleBoxRed_Span.innerHTML = riddleBoxesSolved.riddleBoxRed ? "3" : "?";
+   riddleBoxGreen_Span.innerHTML = riddleBoxesSolved.riddleBoxGreen ? "4" : "?";
+   riddleBoxYellow_Span.innerHTML = riddleBoxesSolved.riddleBoxYellow ? "7" : "?";
    riddleBoxOrange_Span.innerHTML = riddleBoxesSolved.riddleBoxOrange ? "1" : "?";
 }
 window.setRiddleBoxStatus = setRiddleBoxStatus;

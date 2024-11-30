@@ -86,7 +86,12 @@ window.populateDivFromCode = populateDivFromCode;
 const codeTranslation = {
    // Explanation codes or other //
    111111: {
-      text: "Yay, du hast die Website und auch den ersten gültigen Code gefunden. Jeder Code besteht aus 6 Ziffern und kann hier gegen einen Tipp oder eine Information eingelöst werden. Mal schauen was du findest ;D<br>Viel Erfolg <3",
+      text: "Yay, du hast die Website und auch den ersten gültigen Code gefunden. Jeder Code ist eine 6-stellige Zahl und kann hier gegen einen Tipp oder eine Information eingelöst werden. Weitere Codes erhälst du entweder durch die Rätselboxen oder durch deinen Kalender. Die Codes im Kalender geben dir Tipps zu den Rätseln. Bis auf das Golfspiel sind alle Rätsel aber auch ohne diese Tipps lösbar. Mal schauen was du findest ;D<br>Viel Erfolg <3",
+      category: "general",
+      obtainedFrom: "calendar",
+   },
+   810990: {
+      text: "FROHE WEIHNACHTEN <3<br>Hier, ich habe eine ganz große Umarmung für dich. Alle Rätselboxen zusammen ergeben den Code für ein 4-stelliges Zahlenschloss. Mach es nicht vor deiner Familie auf, wenn du dir etwas Peinlichkeit sparen willst ;).<br>Ich liebe dich ❤️",
       category: "general",
       obtainedFrom: "calendar",
    },
