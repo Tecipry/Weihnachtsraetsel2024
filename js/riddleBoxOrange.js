@@ -46,14 +46,14 @@ window.addEventListener('beforeunload', function(event) {
 //// set image according to this tabs assigned image ////
 const searchImageContainer = document.getElementById("searchImageContainer");
 
-var screenWidth = window.innerWidth * 2;
+var screenWidth = 200; // in viewwidth, so basically 200% of screen width
 screenWidth += 16 - screenWidth%16;
 var screenHeight = screenWidth / 16 * 9;
 
-searchImageContainer.style.width = `${screenWidth}px`;
-searchImageContainer.style.height = `${screenHeight}px`;
+searchImageContainer.style.width = `${screenWidth}vw`;
+searchImageContainer.style.height = `${screenHeight}vw`;
 searchImageContainer.style.backgroundImage = `url(${imageLocations[thisTabImage]})`;
-searchImageContainer.style.backgroundSize = `${screenWidth}px ${screenHeight}px`;
+searchImageContainer.style.backgroundSize = `${screenWidth}vw ${screenHeight}vw`;
 
 
 //// Flashlight Effect ////
