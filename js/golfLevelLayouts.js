@@ -32,17 +32,39 @@ export const levels = {
       numberRevealedOnCompletion: 3,
    },
    2: {
-      obstacles: {},
+      obstacles: {
+         topDown: {
+            type: line(relWidth(0.35), relHeight(0.07), relWidth(0.8), relHeight(0.47), "black"),
+         },
+         bottomDown: {
+            type: line(relWidth(0.35), relHeight(0.93), relWidth(0.8), relHeight(0.53), "black"),
+         },
+         left: {
+            type: line(relWidth(0.35), relHeight(0.07), relWidth(0.35), relHeight(0.93), "black"),
+         },
+         blockerTop: {
+            type: line(relWidth(0.15), relHeight(0.07), relWidth(0.35), relHeight(0.07), "black"),
+         },
+         blockerBottom: {
+            type: line(relWidth(0.15), relHeight(0.93), relWidth(0.35), relHeight(0.93), "black"),
+         },
+         blockerLeftUpper: {
+            type: line(relWidth(0.15), relHeight(0.07), relWidth(0.15), relHeight(0.35), "black"),
+         },
+         blockerLeftLower: {
+            type: line(relWidth(0.15), relHeight(0.65), relWidth(0.15), relHeight(0.93), "black"),
+         },
+      },
       decorations: {},
       ballStartLocation: {
          x: relWidth(0.5),
          y: relHeight(0.5),
       },
       goalLocation: {
-         x: relWidth(0.9),
-         y: relHeight(0.9),
+         x: relWidth(0.25),
+         y: relHeight(0.5),
       },
-      amountOfThrows: 5,
+      amountOfThrows: 3,
       numberRevealedOnCompletion: 8,
    },
    3: {
