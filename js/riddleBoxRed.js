@@ -9,7 +9,7 @@ function heartSuccessfullyDrawn(inverted) {
 }
 
 function heartNotDrawn() {
-   document.getElementById("result").innerHTML = "Das ist leider kein Herz :(";
+   document.getElementById("result").innerHTML = "Fast. Aber das gesuchte Herz sieht anders aus ;D";
    setTimeout(function () {
       document.getElementById("result").innerHTML = "";
    }, 3000);
