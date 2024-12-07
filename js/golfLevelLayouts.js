@@ -68,17 +68,59 @@ export const levels = {
       numberRevealedOnCompletion: 8,
    },
    3: {
-      obstacles: {},
-      decorations: {},
+      obstacles: {
+         // Box around Ball:
+         ballBack: {
+            type: line(relWidth(0.70), relHeight(0.35), relWidth(0.70), relHeight(0.65), "black"),
+         },
+         ballBottom: {
+            type: line(relWidth(0.60), relHeight(0.65), relWidth(0.70), relHeight(0.65), "black"),
+         },
+         ballTop: {
+            type: line(relWidth(0.60), relHeight(0.35), relWidth(0.70), relHeight(0.35), "black"),
+         },
+         // Box around Goal:
+         goalBack: {
+            type: line(relWidth(0.85), relHeight(0.35), relWidth(0.85), relHeight(0.65), "black"),
+         },
+         goalBottom: {
+            type: line(relWidth(0.75), relHeight(0.65), relWidth(0.85), relHeight(0.65), "black"),
+         },
+         goalTop: {
+            type: line(relWidth(0.75), relHeight(0.35), relWidth(0.85), relHeight(0.35), "black"),
+         },
+      },
+      decorations: {
+         // Mirrored Box around Goal:
+         goalFront: {
+            type: line(relWidth(0.15), relHeight(0.35), relWidth(0.15), relHeight(0.65), "black"),
+         },
+         goalBottomMirrored: {
+            type: line(relWidth(0.15), relHeight(0.65), relWidth(0.25), relHeight(0.65), "black"),
+         },
+         goalTopMirrored: {
+            type: line(relWidth(0.15), relHeight(0.35), relWidth(0.25), relHeight(0.35), "black"),
+         },
+         // Mirrored Box around Ball:
+         ballFront: {
+            type: line(relWidth(0.30), relHeight(0.35), relWidth(0.30), relHeight(0.65), "black"),
+         },
+         ballBottomMirrored: {
+            type: line(relWidth(0.30), relHeight(0.65), relWidth(0.40), relHeight(0.65), "black"),
+         },
+         ballTopMirrored: {
+            type: line(relWidth(0.30), relHeight(0.35), relWidth(0.40), relHeight(0.35), "black"),
+         },
+      },
       ballStartLocation: {
-         x: relWidth(0.5),
+         x: relWidth(0.65),
          y: relHeight(0.5),
       },
       goalLocation: {
-         x: relWidth(0.9),
-         y: relHeight(0.9),
+         x: relWidth(0.8),
+         y: relHeight(0.5),
       },
-      amountOfThrows: 5,
+      amountOfThrows: 2,
       numberRevealedOnCompletion: 1,
    },
    4: {
