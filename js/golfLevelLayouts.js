@@ -124,17 +124,52 @@ export const levels = {
       numberRevealedOnCompletion: 1,
    },
    4: {
-      obstacles: {},
+      obstacles: {
+         outerDiamondUpperLeft: {
+            type: line(relWidth(0.5), relHeight(0), relWidth(0.25), relHeight(0.5), "black"),
+         },
+         outerDiamondUpperRight: {
+            type: line(relWidth(0.5), relHeight(0), relWidth(0.75), relHeight(0.5), "black"),
+         },
+         outerDiamondLowerLeft: {
+            type: line(relWidth(0.25), relHeight(0.5), relWidth(0.5), relHeight(1), "black"),
+         },
+         outerDiamondLowerRight: {
+            type: line(relWidth(0.75), relHeight(0.5), relWidth(0.5), relHeight(1), "black"),
+         },
+
+         middleDiamondLowerLeft: {
+            type: line(relWidth(0.4), relHeight(0.5), relWidth(0.5), relHeight(0.7), "black"),
+         },
+         middleDiamondLowerRight: {
+            type: line(relWidth(0.6), relHeight(0.5), relWidth(0.5), relHeight(0.7), "black"),
+         },
+         middleDiamondUpperLeft: {
+            type: line(relWidth(0.45), relHeight(0.4), relWidth(0.4), relHeight(0.5), "black"),
+         },
+         middleDiamondUpperRight: {
+            type: line(relWidth(0.55), relHeight(0.4), relWidth(0.6), relHeight(0.5), "black"),
+         },
+
+         innerDiamondUpperLeft: {
+            type: line(relWidth(0.5), relHeight(0.45), relWidth(0.475), relHeight(0.5), "black"),
+         },
+         innerDiamondUpperRight: {
+            type: line(relWidth(0.5), relHeight(0.45), relWidth(0.525), relHeight(0.5), "black"),
+         }
+         
+      
+      },
       decorations: {},
       ballStartLocation: {
          x: relWidth(0.5),
-         y: relHeight(0.5),
+         y: relHeight(0.88),
       },
       goalLocation: {
-         x: relWidth(0.9),
-         y: relHeight(0.9),
+         x: relWidth(0.5),
+         y: relHeight(0.5),
       },
-      amountOfThrows: 5,
+      amountOfThrows: 2,
       numberRevealedOnCompletion: 5,
    },
    5: {

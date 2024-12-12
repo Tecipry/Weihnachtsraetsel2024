@@ -95,6 +95,11 @@ const codeTranslation = {
       category: "general",
       obtainedFrom: "calendar",
    },
+   179333: {
+      text: "Und damit hast du den letzten Code der noch zu den Rätseln gehört gefunden ;D<br>Ich habe zwar keine weiteren Rätsel mehr, dafür aber ein paar behind the scenes <3<br><a href='https://www.youtube.com/playlist?list=PLOLmaDI5X3JMgkZvD_1Mv9pXD4xrFrDbN' class='codeText' target='_blank' style='text-decoration: underline'>https://www.youtube.com/playlist?list=PLOLmaDI5X3JMgkZvD_1Mv9pXD4xrFrDbN</a>",
+      category: "general",
+      obtainedFrom: "calendar",
+   },
 
    // CODES FOR RIDDLE BOX //
 
@@ -171,7 +176,7 @@ const codeTranslation = {
       obtainedFrom: "calendar",
    },
    771510: {
-      text: "Inzwischen bist du ja geübt im Golfen ;).<br>Da schaffst du auch das vierte Level",
+      text: "Inzwischen bist du ja geübt im Golfen ;).<br>Für das vierte Level hast du 2 Schläge. Doch wenn du es etwas schwerer haben willst, dann versuch es mit nur einem zu schaffen <3<br>Eine frühere Version des Levels war mit einem gut machbar. In dieser finalen Version ist es deutlich schwerer, aber immernoch möglich.",
       category: "riddleBoxYellow",
       obtainedFrom: "calendar",
    },
