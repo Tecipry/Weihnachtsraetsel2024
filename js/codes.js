@@ -100,6 +100,11 @@ const codeTranslation = {
       category: "general",
       obtainedFrom: "calendar",
    },
+   146580: {
+      text: "Take this certificate: YOU ARE NOWMY CERTIFIED GAMER GIRL <3",
+      category: "general",
+      obtainedFrom: "calendar",
+   },
 
    // CODES FOR RIDDLE BOX //
 
