@@ -101,7 +101,7 @@ const codeTranslation = {
       obtainedFrom: "calendar",
    },
    146580: {
-      text: "Take this certificate: YOU ARE NOWMY CERTIFIED GAMER GIRL <3",
+      text: "Take this certificate: YOU ARE NOW MY CERTIFIED GAMER GIRL <3",
       category: "general",
       obtainedFrom: "calendar",
    },
