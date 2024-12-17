@@ -173,17 +173,24 @@ export const levels = {
       numberRevealedOnCompletion: 5,
    },
    5: {
-      obstacles: {},
+      obstacles: {
+         leftLine: {
+            type: line(relWidth(0.4), relHeight(0.2), relWidth(0.4), relHeight(0.8), "var(--tea_green)"),
+         },
+         rightLine: {
+            type: line(relWidth(0.6), relHeight(0.1), relWidth(0.6), relHeight(0.9), "var(--tea_green)"),
+         }
+      },
       decorations: {},
       ballStartLocation: {
-         x: relWidth(0.5),
+         x: relWidth(0.2),
          y: relHeight(0.5),
       },
       goalLocation: {
-         x: relWidth(0.9),
-         y: relHeight(0.9),
+         x: relWidth(0.8),
+         y: relHeight(0.5),
       },
-      amountOfThrows: 5,
+      amountOfThrows: 3,
       numberRevealedOnCompletion: 7,
    },
    6: {
