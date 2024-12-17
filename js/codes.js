@@ -187,7 +187,7 @@ const codeTranslation = {
    },
    967854: {
       text: "Noch hast du Spaß mit Bällen vor dir. Gerade nur ein Golfball, aber man kann nie wissen was noch kommt ;)",
-      category: "yeriddleBoxYellowllow",
+      category: "riddleBoxYellowllow",
       obtainedFrom: "calendar",
    },
    665839: {
