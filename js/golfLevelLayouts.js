@@ -181,7 +181,20 @@ export const levels = {
             type: line(relWidth(0.6), relHeight(0.1), relWidth(0.6), relHeight(0.9), "var(--tea_green)"),
          }
       },
-      decorations: {},
+      decorations: {
+         leftLineTop: {
+            type: line(relWidth(0.4), relHeight(0.2), relWidth(0.4), relHeight(0), "black"),
+         },
+         leftLineBottom: {
+            type: line(relWidth(0.4), relHeight(0.8), relWidth(0.4), relHeight(1), "black"),
+         },
+         rightLineTop: {
+            type: line(relWidth(0.6), relHeight(0.1), relWidth(0.6), relHeight(0), "black"),
+         },
+         rightLineBottom: {
+            type: line(relWidth(0.6), relHeight(0.9), relWidth(0.6), relHeight(1), "black"),
+         }
+      },
       ballStartLocation: {
          x: relWidth(0.2),
          y: relHeight(0.5),
@@ -190,7 +203,7 @@ export const levels = {
          x: relWidth(0.8),
          y: relHeight(0.5),
       },
-      amountOfThrows: 3,
+      amountOfThrows: 2,
       numberRevealedOnCompletion: 7,
    },
    6: {
