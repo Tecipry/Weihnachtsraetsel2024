@@ -207,17 +207,50 @@ export const levels = {
       numberRevealedOnCompletion: 7,
    },
    6: {
-      obstacles: {},
-      decorations: {},
+      obstacles: {
+         // very interesting bug: 
+         // The usage of my custom colour variables (defined in css) only works, when the obstacles using it are the first ones in the list of obstacles.
+         // This demoLine above them would break it:
+         // demoLine: {
+         //    type: line(relWidth(0.4), relHeight(0.2), relWidth(0.6), relHeight(0.2), "black"),
+         // },
+         // the custom coloured obstacles would take the colour of the obstacle above them. No clue why.
+         centerLineMiddle: {
+            type: line(relWidth(0.3), relHeight(0.4), relWidth(0.4), relHeight(0.5), "var(--tea_green)"),
+         },
+         centerLineRightPart: {
+            type: line(relWidth(0.4), relHeight(0.5), relWidth(0.9), relHeight(0.5), "var(--tea_green)"),
+         },
+         centerLineLeftPart: {
+            type: line(relWidth(0.1), relHeight(0.4), relWidth(0.3), relHeight(0.4), "black"),
+         },
+         leftLine: {
+            type: line(relWidth(0.1), relHeight(0.15), relWidth(0.1), relHeight(0.85), "black"),
+         },
+         rightLine: {
+            type: line(relWidth(0.9), relHeight(0.15), relWidth(0.9), relHeight(0.85), "black"),
+         },
+         bottomLineLeft: {
+            type: line(relWidth(0.1), relHeight(0.85), relWidth(0.4), relHeight(0.85), "black"),
+         },
+         bottomLineRight: {
+            type: line(relWidth(0.6), relHeight(0.85), relWidth(0.9), relHeight(0.85), "black"),
+         },
+      },
+         decorations: {
+            fakeCenterLine: {
+            type: line(relWidth(0.3), relHeight(0.4), relWidth(0.9), relHeight(0.4), "black"),
+         }
+      },
       ballStartLocation: {
-         x: relWidth(0.5),
-         y: relHeight(0.5),
+         x: relWidth(0.75),
+         y: relHeight(0.25),
       },
       goalLocation: {
-         x: relWidth(0.9),
-         y: relHeight(0.9),
+         x: relWidth(0.25),
+         y: relHeight(0.675),
       },
-      amountOfThrows: 5,
+      amountOfThrows: 2,
       numberRevealedOnCompletion: 4,
    },
 };
